@@ -46,25 +46,39 @@ My style sits at the intersection of clarity, creativity, and precision - and th
       {/* ========================================================= */}
       {/* BOTTOM 1/3 = 33.33dvh                                      */}
       {/* ========================================================= */}
-      <div className="h-1/3 w-full bg-[#FFFFF0] flex flex-col items-center justify-center gap-[3vh]">
+      <div className="h-1/3 w-full bg-[#FFFFF0] flex flex-col items-center justify-center gap-3">
 
         {/* ---------------- BLOCK C: 4 Color Buttons ---------------- */}
-        <div className="grid grid-cols-2 md:flex md:flex-row gap-[2vh] md:gap-[3vw] w-[80vw] md:w-auto justify-center">
-          {["🟥 Action/ Results", "🟨 Creativity/ Collaboration", "🟩 Stability/ Support", "🟦 Logic/ Planning"].map((c) => (
-            <button
-              key={c}
-              className="bg-gray-950 text-white p-2 rounded-md "
-            >
-              {c}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <button className="bg-blue-200 rounded px-3">
+                <span className="text-md font-bold block">BLUE</span>
+                <span className="text-sm opacity-90 block">Skills & Tech</span>
             </button>
-          ))}
+            <button className="bg-red-200 rounded px-3">
+                <span className="text-md font-bold block">RED</span>
+                <span className="text-sm opacity-90 block">Projects & Impact</span>
+            </button>
+            <button className="bg-green-200 rounded px-3">
+                <span className="text-md font-bold block">GREEN</span>
+                <span className="text-sm opacity-90 block">My Work Style</span>
+            </button>
+            <button className="bg-yellow-200 rounded px-3">
+                <span className="text-md font-bold block">YELLOW</span>
+                <span className="text-sm opacity-90 block">Connect With Me</span>
+            </button>
         </div>
 
         {/* ---------------- BLOCK D: Explore All Colors ---------------- */}
-        <button className="bg-black text-white py-2 px-3 rounded-md">
+        <button className="bg-black text-white bg-gray-700 rounded-md px-3 py-1">
           Explore all colors
         </button>
-      </div>
+      </div> 
+
+         {/* ========================================================= */}
+         {/* BOTTOM 1/3 = 33.33dvh                                      */}
+         {/* ========================================================= */}   
+    
+
     </section>
   );
 }

@@ -69,7 +69,7 @@ export default function BlueSection({
         `}
       >
         <h1 className="text-4xl font-bold mb-2">My Blue Side.</h1>
-        <h2 className="text-2xl font-semibold mb-1">Depth and expertise.</h2>
+        <h2 className="text-2xl font-semibold mb-1">Depth & Expertise.</h2>
         <p className="text-md opacity-80">The foundation of my technical skills.</p>
       </div>
 

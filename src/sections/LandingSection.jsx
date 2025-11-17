@@ -8,6 +8,7 @@ export default function LandingSection({
   abortIntro,
   locked,
   onIntroComplete,
+  scrollToSection
 }) {
   const [showIntro, setShowIntro] = useState(false);
   const [showMain, setShowMain] = useState(false);
@@ -147,25 +148,25 @@ export default function LandingSection({
         <div className="h-1/3 w-full bg-[#FDF6E3] flex flex-col items-center pt-6 gap-3">
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <button className="bg-blue-200 rounded px-3 py-1">
+            <button className="bg-blue-200 rounded px-3 py-1" onClick={() => scrollToSection(1)}>
               <span className="text-md font-bold block">BLUE</span>
               <span className="text-sm block">Skills & Tech</span>
             </button>
-            <button className="bg-red-200 rounded px-3 py-1">
+            <button className="bg-red-200 rounded px-3 py-1" onClick={() => scrollToSection(2)}>
               <span className="text-md font-bold block">RED</span>
               <span className="text-sm block">Projects & Impact</span>
             </button>
-            <button className="bg-green-200 rounded px-3 py-1">
+            <button className="bg-green-200 rounded px-3 py-1" onClick={() => scrollToSection(3)}>
               <span className="text-md font-bold block">GREEN</span>
               <span className="text-sm block">My Work Style</span>
             </button>
-            <button className="bg-yellow-200 rounded px-3 py-1">
+            <button className="bg-yellow-200 rounded px-3 py-1" onClick={() => scrollToSection(4)}>
               <span className="text-md font-bold block">YELLOW</span>
               <span className="text-sm block">Connect With Me</span>
             </button>
           </div>
 
-          <button className="text-white bg-gray-700 rounded-md px-3 py-1">
+          <button className="text-white bg-gray-700 rounded-md px-3 py-1" onClick={() => scrollToSection(1)}>
             Explore all colors
           </button>
         </div>

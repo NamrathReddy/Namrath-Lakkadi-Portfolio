@@ -4,11 +4,19 @@ import RedSection from "./sections/RedSection";
 import BlueSection from "./sections/BlueSection";
 import GreenSection from "./sections/GreenSection";
 import YellowSection from "./sections/YellowSection";
+import FloatyShell from "./components/FloatyShell";
 
 const sections = [LandingSection, BlueSection, RedSection, GreenSection, YellowSection];
 
 export default function App() {
+  const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
+
   const containerRef = useRef(null);
+  const sectionRefs = useRef([]);
+
+  function scrollToSection(index) {
+  sectionRefs.current[index]?.scrollIntoView({ behavior: "smooth" });
+}
 
   // One entry per section
   const [sectionStates, setSectionStates] = useState(() =>
@@ -52,6 +60,9 @@ export default function App() {
 
             if (entry.isIntersecting) {
               // ENTER view
+
+              setCurrentSectionIndex(index);
+
               if (!state.locked) {
                 state.playIntro = true;   // trigger intro
                 state.abortIntro = false; // clear abort
@@ -84,21 +95,33 @@ export default function App() {
     return () => observer.disconnect();
   }, []);
 
-  return (
+  return (<>
     <div
       ref={containerRef}
       className="w-full snap-y snap-mandatory overflow-y-scroll h-screen"
     >
       {sections.map((Sec, index) => (
-        <div key={Sec.name ?? index} className="snap-start h-screen">
+        <div
+          key={index}
+          ref={(el) => (sectionRefs.current[index] = el)}
+          className="snap-start h-dvh"
+        >
           <Sec
             playIntro={sectionStates[index]?.playIntro}
             abortIntro={sectionStates[index]?.abortIntro}
             locked={sectionStates[index]?.locked}
             onIntroComplete={() => handleIntroComplete(index)}
+            // ⭐ Only pass scrollToSection to LandingSection (index === 0)
+            {...(index === 0 ? { scrollToSection } : {})} //why no prop name?
           />
         </div>
       ))}
     </div>
+    {/* ⭐ Adding FloatyShell here (AFTER scroll area) */}
+    <FloatyShell
+      currentSectionIndex={currentSectionIndex}
+      scrollToSection={scrollToSection}
+    />
+    </>
   );
 }

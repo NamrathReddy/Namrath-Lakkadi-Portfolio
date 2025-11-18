@@ -6,17 +6,23 @@ import GreenSection from "./sections/GreenSection";
 import YellowSection from "./sections/YellowSection";
 import FloatyShell from "./components/FloatyShell";
 
-const sections = [LandingSection, BlueSection, RedSection, GreenSection, YellowSection];
+const sections = [
+  LandingSection,
+  BlueSection,
+  RedSection,
+  GreenSection,
+  YellowSection
+];
 
 export default function App() {
-  const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
+  const [currentSectionIndices, setCurrentSectionIndices] = useState(new Set());
 
   const containerRef = useRef(null);
   const sectionRefs = useRef([]);
 
   function scrollToSection(index) {
-  sectionRefs.current[index]?.scrollIntoView({ behavior: "smooth" });
-}
+    sectionRefs.current[index]?.scrollIntoView({ behavior: "smooth" });
+  }
 
   // One entry per section
   const [sectionStates, setSectionStates] = useState(() =>
@@ -27,11 +33,9 @@ export default function App() {
     }))
   );
 
-  // When a section reports “intro finished successfully”
   function handleIntroComplete(index) {
     setSectionStates((prev) => {
       const copy = [...prev];
-      // lock this section
       copy[index] = {
         ...copy[index],
         locked: true,
@@ -54,24 +58,37 @@ export default function App() {
 
           entries.forEach((entry) => {
             const index = Number(entry.target.dataset.index);
+
             if (Number.isNaN(index)) return;
 
             const state = { ...copy[index] };
 
+            // ADD or REMOVE INDEX based on intersecting state
             if (entry.isIntersecting) {
-              // ENTER view
+              // Add index
+              setCurrentSectionIndices((prev) => {
+                const next = new Set(prev);
+                next.add(index);
+                return next;
+              });
 
-              setCurrentSectionIndex(index);
-
+              // Play intro if not locked
               if (!state.locked) {
-                state.playIntro = true;   // trigger intro
-                state.abortIntro = false; // clear abort
+                state.playIntro = true;
+                state.abortIntro = false;
               }
             } else {
-              // LEAVE view
+              // Remove index
+              setCurrentSectionIndices((prev) => {
+                const next = new Set(prev);
+                next.delete(index);
+                return next;
+              });
+
+              // Stop intro if not locked
               if (!state.locked) {
-                state.abortIntro = true;  // abort running animation
-                state.playIntro = false;  // stop asking to play
+                state.abortIntro = true;
+                state.playIntro = false;
               }
             }
 
@@ -82,11 +99,11 @@ export default function App() {
         });
       },
       {
-        threshold: 0.5, // section considered "in view" when 50% visible
+        threshold: 0.1,
       }
     );
 
-    // Attach data-index and observe each section container
+    // Observe each section div
     Array.from(children).forEach((el, index) => {
       el.dataset.index = index;
       observer.observe(el);
@@ -95,33 +112,38 @@ export default function App() {
     return () => observer.disconnect();
   }, []);
 
-  return (<>
-    <div
-      ref={containerRef}
-      className="w-full snap-y snap-mandatory overflow-y-scroll h-screen"
-    >
-      {sections.map((Sec, index) => (
-        <div
-          key={index}
-          ref={(el) => (sectionRefs.current[index] = el)}
-          className="snap-start h-dvh"
-        >
-          <Sec
-            playIntro={sectionStates[index]?.playIntro}
-            abortIntro={sectionStates[index]?.abortIntro}
-            locked={sectionStates[index]?.locked}
-            onIntroComplete={() => handleIntroComplete(index)}
-            // ⭐ Only pass scrollToSection to LandingSection (index === 0)
-            {...(index === 0 ? { scrollToSection } : {})} //why no prop name?
-          />
-        </div>
-      ))}
-    </div>
-    {/* ⭐ Adding FloatyShell here (AFTER scroll area) */}
-    <FloatyShell
-      currentSectionIndex={currentSectionIndex}
-      scrollToSection={scrollToSection}
-    />
+  const indicesArray = [...currentSectionIndices];
+  const mainIndex = indicesArray[0] ?? 0;
+
+  return (
+    <>
+      <div
+        ref={containerRef}
+        className="w-full snap-y snap-mandatory overflow-y-scroll h-screen"
+      >
+        {sections.map((Sec, index) => (
+          <div
+            key={index}
+            ref={(el) => (sectionRefs.current[index] = el)}
+            className="snap-start h-dvh"
+          >
+            <Sec
+              playIntro={sectionStates[index]?.playIntro}
+              abortIntro={sectionStates[index]?.abortIntro}
+              locked={sectionStates[index]?.locked}
+              onIntroComplete={() => handleIntroComplete(index)}
+              {...(index === 0 ? { scrollToSection } : {})}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* ⭐ FloatyShell BELOW the scrolling content */}
+      <FloatyShell
+        currentSectionIndices={indicesArray}
+        scrollToSection={scrollToSection}
+        locked={sectionStates[mainIndex]?.locked}
+      />
     </>
   );
 }

@@ -32,7 +32,7 @@ export default function FloatyShell({
 
   const containerClass = [
     "fixed w-full transition-all duration-300 ease-out overflow-hidden z-20 border border-black",
-    (locked && currentSectionIndices.length===1)? `opacity-100 ${currentConfig.bgClass}` : "opacity-0",
+    (locked && currentSectionIndices.length===1)? `opacity-100 ${currentConfig.bgClass}` : "opacity-0 bg-none left-[100vw]",
     isOpen
       ? (isLanding
           ? "left-0 bottom-0 h-screen xl:h-[33vh]"

@@ -99,7 +99,7 @@ export default function App() {
         });
       },
       {
-        threshold: 0.1,
+        threshold: 0.05, //match this threshold with empty bottom space below the FloatyShell to let the floaty go away once the next color touches it.
       }
     );
 

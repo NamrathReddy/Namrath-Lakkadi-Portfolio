@@ -17,11 +17,22 @@ export default function LandingSection({
   const mainTimer = useRef(null);
   const lockTimer = useRef(null);
 
+    // ⭐ FIX: central timer cleanup
+const clearAllTimers = () => {
+  clearTimeout(introTimer.current);
+  clearTimeout(mainTimer.current);
+  clearTimeout(lockTimer.current);
+  introTimer.current = null;
+  mainTimer.current = null;
+  lockTimer.current = null;
+};
+
   // -------------------------------
   // PLAY INTRO SEQUENCE
   // -------------------------------
   useEffect(() => {
     if (playIntro && !locked) {
+      clearAllTimers(); // 🔥 FIX: prevent leftover timers
       setShowIntro(true);
       setShowMain(false);
 
@@ -45,26 +56,19 @@ export default function LandingSection({
   // -------------------------------
   // ABORT SEQUENCE
   // -------------------------------
-  useEffect(() => {
+useEffect(() => {
     if (abortIntro && !locked) {
-      setShowIntro(false);
-      setShowMain(false);
-
-      clearTimeout(introTimer.current);
-      clearTimeout(mainTimer.current);
-      clearTimeout(lockTimer.current);
-    }
+  clearAllTimers(); // 🔥 FIX: one unified cleanup
+  setShowIntro(false);
+  setShowMain(false);
+}
   }, [abortIntro, locked]);
 
   // -------------------------------
   // CLEANUP
   // -------------------------------
   useEffect(() => {
-    return () => {
-      clearTimeout(introTimer.current);
-      clearTimeout(mainTimer.current);
-      clearTimeout(lockTimer.current);
-    };
+    return () => clearAllTimers();
   }, []);
 
   return (

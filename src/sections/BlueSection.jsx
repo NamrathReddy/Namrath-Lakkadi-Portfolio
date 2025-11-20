@@ -131,7 +131,6 @@ function Skill({ icon, label }) {
 // ----------------------
 function Category({ title, skills }) {
   return (
-    <div className="h-dvh flex flex-col justify-center pb-[15vh] snap-start">
     <div className="bg-blue-50 p-4 rounded-xl border border-blue-200 shadow-sm">
       <h3 className="text-blue-800 font-semibold mb-3 text-lg">{title}</h3>
 
@@ -140,7 +139,6 @@ function Category({ title, skills }) {
           <Skill key={i} icon={icons[s.icon]} label={s.label} />
         ))}
       </div>
-    </div>
     </div>
   );
 }
@@ -171,7 +169,14 @@ const clearAllTimers = () => {
   lockTimer.current = null;
 };
 
-
+  // If locked, skip intro and directly show final content
+useEffect(() => {
+  if (locked) {
+    clearAllTimers(); 
+    setShowIntro(false);
+    setShowSkills(true);  // <---- THIS LINE FIXES EVERYTHING
+  }
+}, [locked]);
   // PLAY INTRO
   useEffect(() => {
   if (playIntro && !locked) {
@@ -224,8 +229,8 @@ const clearAllTimers = () => {
           ${showSkills ? "opacity-100 overflow-scroll" : "opacity-0"}
         `}
       >
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-
+        <div className="mx-auto grid grid-cols-1 lg:grid-cols-2">
+          <div className="h-dvh pb-[20vh]">
           <Category
             title="Frontend"
             skills={[
@@ -237,7 +242,23 @@ const clearAllTimers = () => {
               { icon: "recharts", label: "Recharts" },
             ]}
           />
-
+          <Category
+            title="UI/UX Engineering"
+            skills={[
+              { icon: "a11y", label: "Accessibility (WCAG 2.1 AA)" },
+              { icon: "i18n", label: "i18n (react-i18next)" },
+              { icon: "uiGrid", label: "Reusable UI Systems" },
+            ]}
+          />
+          <Category
+            title="Performance Optimization"
+            skills={[
+              { icon: "split", label: "Route-level code splitting" },
+              { icon: "lazy", label: "Lazy Loading" },
+            ]}
+          />
+          </div>
+          <div className="h-dvh">
           <Category
             title="Backend / APIs"
             skills={[
@@ -249,7 +270,6 @@ const clearAllTimers = () => {
               { icon: "postgres", label: "Basic PostgreSQL" },
             ]}
           />
-
           <Category
             title="Auth & Security"
             skills={[
@@ -258,24 +278,6 @@ const clearAllTimers = () => {
               { icon: "signed", label: "Signed Share Links" },
             ]}
           />
-
-          <Category
-            title="UI/UX Engineering"
-            skills={[
-              { icon: "a11y", label: "Accessibility (WCAG 2.1 AA)" },
-              { icon: "i18n", label: "i18n (react-i18next)" },
-              { icon: "uiGrid", label: "Reusable UI Systems" },
-            ]}
-          />
-
-          <Category
-            title="Performance Optimization"
-            skills={[
-              { icon: "split", label: "Route-level code splitting" },
-              { icon: "lazy", label: "Lazy Loading" },
-            ]}
-          />
-
           <Category
             title="Quality & DevOps"
             skills={[
@@ -283,8 +285,9 @@ const clearAllTimers = () => {
               { icon: "gha", label: "GitHub Actions / CI" },
             ]}
           />
-          <div className="h-dvh snap-start flex justify-center items-center">
-            <h1 className="text-4xl">"Quote Goes Here..."</h1>
+          </div>
+          <div className="h-dvh flex justify-center items-center px-3 w-full">
+            <h1 className="text-4xl text-center">I believe every skill can be mastered with curiosity, clarity, & consistency</h1>
           </div>
 
         </div>

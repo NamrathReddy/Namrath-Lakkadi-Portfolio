@@ -27,6 +27,14 @@ const clearAllTimers = () => {
   lockTimer.current = null;
 };
 
+  // If locked, skip intro and directly show final content
+useEffect(() => {
+  if (locked) {
+    clearAllTimers(); 
+    setShowIntro(false);
+    setShowMain(true);  // <---- THIS LINE FIXES EVERYTHING
+  }
+}, [locked]);
   // -------------------------------
   // PLAY INTRO SEQUENCE
   // -------------------------------
@@ -78,7 +86,7 @@ useEffect(() => {
       <div
         className={`absolute inset-0 flex flex-col items-center justify-center 
         transition-opacity duration-1000
-        ${showIntro ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
+        ${showIntro ? "opacity-100" : "opacity-0 "}
         `}
       >
         <h1 className="text-4xl font-bold mb-2 text-white drop-shadow-md">

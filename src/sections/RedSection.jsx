@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-
+//I turn complex technical challenges into clean, high-impact solutions
 const INTRO_DURATION = 4200;
 
 export default function RedSection({
@@ -24,6 +24,15 @@ export default function RedSection({
     projectsTimer.current = null;
     lockTimer.current = null;
   };
+
+  // If locked, skip intro and directly show final content
+useEffect(() => {
+  if (locked) {
+    clearAllTimers(); 
+    setShowIntro(false);
+    setShowProjects(true);  // <---- THIS LINE FIXES EVERYTHING
+  }
+}, [locked]);
 
   // ⭐ PLAY INTRO
   useEffect(() => {

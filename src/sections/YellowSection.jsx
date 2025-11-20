@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-
+//Let’s start a conversation — great things often begin with one
 const INTRO_DURATION = 4500;
 
 export default function YellowSection({
@@ -25,6 +25,14 @@ export default function YellowSection({
     lockTimer.current = null;
   };
 
+    // If locked, skip intro and directly show final content
+  useEffect(() => {
+    if (locked) {
+      clearAllTimers(); 
+      setShowIntro(false);
+      setShowConnect(true);  // <---- THIS LINE FIXES EVERYTHING
+    }
+  }, [locked]);
   // ⭐ PLAY INTRO
   useEffect(() => {
     if (playIntro && !locked) {

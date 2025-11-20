@@ -115,6 +115,18 @@ export default function App() {
   const indicesArray = [...currentSectionIndices];
   const mainIndex = indicesArray[0] ?? 0;
 
+  function disableAnimations(x){
+    if(x){
+      setSectionStates(prev=>prev.map(s=>({
+        playIntro: false,
+      abortIntro: false,
+      locked: true,
+      })))
+    }else{
+      window.location.reload();
+    }
+  }
+
   return (
     <>
       <div
@@ -143,6 +155,7 @@ export default function App() {
         currentSectionIndices={indicesArray}
         scrollToSection={scrollToSection}
         locked={sectionStates[mainIndex]?.locked}
+        disableAnimations={disableAnimations}
       />
     </>
   );

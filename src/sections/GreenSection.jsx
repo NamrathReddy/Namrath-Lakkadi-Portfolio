@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-
+//I believe the best solutions come from collaboration, clarity, and thoughtful decision-making.
 const INTRO_DURATION = 5000;
 
 export default function GreenSection({
@@ -25,6 +25,14 @@ export default function GreenSection({
     lockTimer.current = null;
   };
 
+    // If locked, skip intro and directly show final content
+  useEffect(() => {
+    if (locked) {
+      clearAllTimers(); 
+      setShowIntro(false);
+      setShowContent(true);  // <---- THIS LINE FIXES EVERYTHING
+    }
+  }, [locked]);
   // ⭐ PLAY INTRO
   useEffect(() => {
     if (playIntro && !locked) {

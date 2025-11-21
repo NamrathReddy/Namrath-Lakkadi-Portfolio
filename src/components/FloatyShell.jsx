@@ -14,6 +14,8 @@ export default function FloatyShell({
   locked,
   disableAnimations
 }) {
+    //temporarily disabling animations
+  // disableAnimations(true);
   const [isOpen, setIsOpen] = useState(false);
 
 
@@ -35,7 +37,7 @@ export default function FloatyShell({
   const containerClass = [
     "fixed w-full transition-all duration-700 ease-out overflow-hidden z-20",
     (locked&& currentSectionIndices.length===1)? "opacity-100" : "opacity-0 top-full",
-    isOpen ? "top-0 h-screen bg-[#FDF6E3]" : `top-[90vh] h-[10vh] ${currentConfig.bgClass}`,
+    isOpen ? "top-0 h-screen bg-gray-400" : `top-[90vh] h-[10vh] ${currentConfig.bgClass}`,
   ].join(" ");
 
   function LandingExpanded() {

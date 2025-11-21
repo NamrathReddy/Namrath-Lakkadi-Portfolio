@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 //I turn complex technical challenges into clean, high-impact solutions
+//I aim to maximize impact and improve performance, without losing sight of deadlines.
+//keep the above statement constant on bottom of the screen and but the scroll should work normally, i think we can make it work by putting all the projects in one conatiner and make it scrollable but put the statement in seperate container
 const INTRO_DURATION = 4200;
 
 export default function RedSection({

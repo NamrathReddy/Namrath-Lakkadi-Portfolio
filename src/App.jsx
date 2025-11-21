@@ -115,6 +115,7 @@ export default function App() {
   const indicesArray = [...currentSectionIndices];
   const mainIndex = indicesArray[0] ?? 0;
 
+
   function disableAnimations(x){
     if(x){
       setSectionStates(prev=>prev.map(s=>({

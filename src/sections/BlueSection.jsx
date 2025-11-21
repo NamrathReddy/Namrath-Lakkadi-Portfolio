@@ -116,12 +116,12 @@ const icons = {
 // ----------------------
 function Skill({ icon, label }) {
   return (
-    <div className="flex items-center space-x-3 text-sm bg-white/60 backdrop-blur-sm p-2 rounded-lg shadow-sm">
+    <div className="flex items-center text-sm bg-white/80 backdrop-blur-sm rounded-lg shadow-sm px-3 py-1">
       <span
         className="w-5 h-5"
         dangerouslySetInnerHTML={{ __html: icon }}
       />
-      <span className="font-medium">{label}</span>
+      <span className="font-medium px-2">{label}</span>
     </div>
   );
 }
@@ -131,10 +131,10 @@ function Skill({ icon, label }) {
 // ----------------------
 function Category({ title, skills }) {
   return (
-    <div className="bg-blue-50 p-4 rounded-xl border border-blue-200 shadow-sm">
-      <h3 className="text-blue-800 font-semibold mb-3 text-lg">{title}</h3>
+    <div className="bg-blue-50 rounded-xl border border-blue-200 shadow-sm pb-2 w-[90%] xl:w-2/3">
+      <h3 className="text-blue-800 font-semibold px-2 py-1 text-lg">{title}</h3>
 
-      <div className="grid grid-cols-1 gap-2">
+      <div className="grid grid-cols-1 gap-1">
         {skills.map((s, i) => (
           <Skill key={i} icon={icons[s.icon]} label={s.label} />
         ))}
@@ -225,12 +225,12 @@ useEffect(() => {
 
       {/* SKILLS */}
       <div
-        className={`absolute inset-0 px-3 transition-opacity duration-1000 snap-y snap-mandatory
+        className={`absolute inset-0 transition-opacity duration-1000 snap-y snap-mandatory
           ${showSkills ? "opacity-100 overflow-scroll" : "opacity-0"}
         `}
       >
-        <div className="mx-auto grid grid-cols-1 lg:grid-cols-2">
-          <div className="h-dvh pb-[20vh]">
+        <div className="mx-auto grid grid-cols-1 md:grid-cols-2 md:grid-rows-[75vh_25vh] xl:gap-x-12">
+          <div className="h-dvh md:h-full pb-[10vh] md:pb-0 flex flex-col gap-2 justify-center items-center xl:items-end snap-start">
           <Category
             title="Frontend"
             skills={[
@@ -245,7 +245,7 @@ useEffect(() => {
           <Category
             title="UI/UX Engineering"
             skills={[
-              { icon: "a11y", label: "Accessibility (WCAG 2.1 AA)" },
+              { icon: "a11y", label: "Accessibility" },
               { icon: "i18n", label: "i18n (react-i18next)" },
               { icon: "uiGrid", label: "Reusable UI Systems" },
             ]}
@@ -258,7 +258,7 @@ useEffect(() => {
             ]}
           />
           </div>
-          <div className="h-dvh">
+          <div className="h-dvh md:h-full pb-[10vh] md:pb-0 flex flex-col gap-2 justify-center items-center xl:items-start snap-start">
           <Category
             title="Backend / APIs"
             skills={[
@@ -274,7 +274,7 @@ useEffect(() => {
             title="Auth & Security"
             skills={[
               { icon: "nextauth", label: "NextAuth (SSO)" },
-              { icon: "rbac", label: "Role-Based Access Control (RBAC)" },
+              { icon: "rbac", label: "Role-Based Access Control" },
               { icon: "signed", label: "Signed Share Links" },
             ]}
           />
@@ -286,8 +286,9 @@ useEffect(() => {
             ]}
           />
           </div>
-          <div className="h-dvh flex justify-center items-center px-3 w-full">
-            <h1 className="text-4xl text-center">I believe every skill can be mastered with curiosity, clarity, & consistency</h1>
+          <div className="h-dvh md:h-full md:col-span-2 bg-blue-300 flex flex-row justify-center items-center md:items-start pb-[10vh] md:pb-0 px-2 snap-start md:snap-none">
+            <h1 className="text-2xl text-center text-blue-500 font-medium p-6">My learning style is analytical: I research thoroughly, clarify concepts, and build knowledge step by step.</h1>
+            {/* I believe every skill can be mastered with curiosity, clarity, & consistency */}
           </div>
 
         </div>

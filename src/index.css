@@ -30,3 +30,31 @@
 .animate-intro {
   animation: intro 1.5s ease-out forwards;
 }
+/* Hide scrollbar for Chrome, Safari, Edge */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+* {
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for IE/Edge (legacy) */
+* {
+  -ms-overflow-style: none;
+}
+
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+

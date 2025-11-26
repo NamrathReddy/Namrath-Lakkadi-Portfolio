@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 //Let’s start a conversation — great things often begin with one
+// I keep the door open — reach out anytime.
 const INTRO_DURATION = 4500;
 
 export default function YellowSection({

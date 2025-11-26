@@ -116,7 +116,7 @@ const icons = {
 // ----------------------
 function Skill({ icon, label }) {
   return (
-    <div className="flex items-center text-sm bg-white/80 backdrop-blur-sm rounded-lg shadow-sm px-3 py-1">
+    <div className="flex items-center text-sm lg:text-md bg-white/80 backdrop-blur-sm rounded-lg shadow-sm px-3 py-[1vh] h-[4vh]">
       <span
         className="w-5 h-5"
         dangerouslySetInnerHTML={{ __html: icon }}
@@ -131,10 +131,10 @@ function Skill({ icon, label }) {
 // ----------------------
 function Category({ title, skills }) {
   return (
-    <div className="bg-blue-50 rounded-xl border border-blue-200 shadow-sm pb-2 w-[90%] xl:w-2/3">
-      <h3 className="text-blue-800 font-semibold px-2 py-1 text-lg">{title}</h3>
+    <div className="bg-blue-100 rounded-xl border border-blue-200 shadow-lg pb-[1vh] w-[90%] xl:w-2/3">
+      <h3 className="text-blue-800 font-semibold px-2 py-[1vh] text-lg lg:text-xl">{title}</h3>
 
-      <div className="grid grid-cols-1 gap-1">
+      <div className="grid grid-cols-1 gap-[.5vh]">
         {skills.map((s, i) => (
           <Skill key={i} icon={icons[s.icon]} label={s.label} />
         ))}
@@ -229,9 +229,9 @@ useEffect(() => {
           ${showSkills ? "opacity-100 overflow-scroll" : "opacity-0"}
         `}
       >
-        <div className="mx-auto grid grid-cols-1 md:grid-cols-2 md:grid-rows-[75vh_25vh] xl:gap-x-12">
-          <div className="h-dvh md:h-full pb-[10vh] md:pb-0 flex flex-col gap-2 justify-center items-center xl:items-end snap-start">
-          <Category
+        <div className="mx-auto grid grid-cols-1 md:grid-cols-2 md:grid-rows-[80vh_20vh] xl:gap-x-12">
+          <div className="h-dvh md:h-full pb-[10vh] md:pb-0 flex flex-col gap-2 justify-center items-center xl:items-end snap-start md:snap-none">
+          <Category //should i do pb-[10vh] or mb? pb is the answer
             title="Frontend"
             skills={[
               { icon: "react", label: "React.js" },
@@ -258,7 +258,7 @@ useEffect(() => {
             ]}
           />
           </div>
-          <div className="h-dvh md:h-full pb-[10vh] md:pb-0 flex flex-col gap-2 justify-center items-center xl:items-start snap-start">
+          <div className="h-dvh md:h-full pb-[10vh] md:pb-0 flex flex-col gap-2 justify-center items-center xl:items-start snap-start md:snap-none">
           <Category
             title="Backend / APIs"
             skills={[
@@ -286,8 +286,11 @@ useEffect(() => {
             ]}
           />
           </div>
-          <div className="h-dvh md:h-full md:col-span-2 bg-blue-300 flex flex-row justify-center items-center md:items-start pb-[10vh] md:pb-0 px-2 snap-start md:snap-none">
-            <h1 className="text-2xl text-center text-blue-500 font-medium p-6">My learning style is analytical: I research thoroughly, clarify concepts, and build knowledge step by step.</h1>
+          <div className="h-dvh md:h-full md:col-span-2 bg-blue-300 flex flex-row justify-center items-center md:items-start  px-2 snap-start md:snap-none">
+            <div className="text-xl md:h-[10vh] flex flex-col items-center justify-center text-center text-blue-500 font-medium">
+              <h1>My learning style is analytical: I research thoroughly, clarify concepts, and build knowledge step by step.</h1>
+            </div>
+            
             {/* I believe every skill can be mastered with curiosity, clarity, & consistency */}
           </div>
 

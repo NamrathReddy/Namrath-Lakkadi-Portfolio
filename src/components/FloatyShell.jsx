@@ -32,7 +32,7 @@ export default function FloatyShell({
 
   const floatyIcon = isLanding
     ? isOpen ? "X" : "?"
-    : isOpen ? "X" : "^"; //◎
+    : isOpen ? "X" : "▲"; //◎
 
   const containerClass = [
     "fixed w-full transition-all duration-700 ease-out overflow-hidden z-20",
@@ -128,9 +128,10 @@ export default function FloatyShell({
             :
             (<div 
             onClick={() => setIsOpen((prev) => !prev)}
-            className= "flex flex-col items-center text-2xl h-full">
-              <h1>^</h1>
-              <h1 className="text-center text-white">
+            className= "flex flex-col justify-center items-center text-2xl h-full text-center text-white">
+              <h1 className="">︿</h1> 
+              {/* ▲ */}
+              <h1 >
                 {currentConfig.label}
               </h1>
             </div>)

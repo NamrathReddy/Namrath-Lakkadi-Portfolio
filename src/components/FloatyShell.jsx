@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const sectionConfig = [
-  { id: "landing", label: "Over view", type: "landing", bgClass: "bg-[#FDF6E3]" },
+  { id: "landing", label: "Over view", type: "landing", bgClass: "bg-[#FFF9ED]" },
   { id: "blue", label: "Skills & Tech", type: "color", bgClass: "bg-blue-600" },
   { id: "red", label: "Projects & Impact", type: "color", bgClass: "bg-red-600" },
   { id: "green", label: "My Work Style", type: "color", bgClass: "bg-green-600" },
@@ -35,9 +35,9 @@ export default function FloatyShell({
     : isOpen ? "X" : "▲"; //◎
 
   const containerClass = [
-    "fixed w-full transition-all duration-700 ease-out overflow-hidden z-20",
+    "fixed w-full transition-all duration-700 ease-out overflow-hidden z-20 text-white",
     (locked&& currentSectionIndices.length===1)? "opacity-100" : "opacity-0 top-full",
-    isOpen ? "top-0 h-screen bg-gray-400" : `top-[90vh] h-[10vh] ${currentConfig.bgClass}`,
+    isOpen ? "top-0 h-screen bg-black" : isLanding? "top-[95vh] h-[5vh]" :`top-[90vh] h-[10vh] ${currentConfig.bgClass}`,
   ].join(" ");
 
   function LandingExpanded() {
@@ -62,7 +62,7 @@ export default function FloatyShell({
         </p>
         <p>To disable intro animations click "⏹️"</p>
         <button 
-          className="border border-2 border-black p-1 rounded-full mt-[10vh]"
+          className="border-2 border-black p-1 rounded-full mt-[10vh]"
           >X</button>
       </div>
     );
@@ -93,7 +93,7 @@ export default function FloatyShell({
           ))}
           <button 
           onClick={() => setIsOpen((prev) => !prev)}
-          className="border border-2 border-black p-1 rounded-full h-12 w-12 mt-12"
+          className="border-2 border-black p-1 rounded-full h-12 w-12 mt-12"
           >X</button>
         </div>
     );
@@ -110,8 +110,8 @@ export default function FloatyShell({
             (<LandingExpanded />)
             :
             (<div 
-            className="flex justify-between text-3xl h-full">
-              <button onClick={()=> {
+            className="flex flex-row justify-end items-start h-full">
+              {/* <button onClick={()=> {
                 noAnimations=!noAnimations;
                 if(noAnimations){
                   const yes = window.confirm("Disable Intro animations?");
@@ -119,9 +119,11 @@ export default function FloatyShell({
                 }
                 disableAnimations(noAnimations);
               }
-              }>{noAnimations?"▶️":"⏹️"}</button>
+              }>{noAnimations?"▶️":"⏹️"}</button> */}
               <button onClick={() => setIsOpen((prev) => !prev)}
-                >?</button>
+                >
+                  <span className="bg-black text-white text-sm h-5 w-5 px-2 py-1 mr-2 rounded-full">?</span>
+                  </button>
             </div>)
           ): (isOpen?
             (<ColorExpanded />)
@@ -129,11 +131,12 @@ export default function FloatyShell({
             (<div 
             onClick={() => setIsOpen((prev) => !prev)}
             className= "flex flex-col justify-center items-center text-2xl h-full text-center text-white">
-              <h1 className="">︿</h1> 
-              {/* ▲ */}
+              
               <h1 >
                 {currentConfig.label}
               </h1>
+              <h1 className="leading-[2vh] h-[2vh] text-2xl">︿</h1> 
+              {/* ▲ */}
             </div>)
             
             )}

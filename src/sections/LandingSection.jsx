@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import profileImg from "../assets/download.png";
+import profileImg from "../assets/plain5.webp";
 
 const INTRO_DURATION = 4500; // extend if you want the landing to be slower
 
@@ -80,13 +80,13 @@ useEffect(() => {
   }, []);
 
   return (
-    <section className="h-dvh w-full bg-gray-400 snap-start snap-always relative overflow-hidden">
+    <section className="h-dvh w-full bg-black font-semibold snap-start snap-always relative overflow-hidden">
 
       {/* ===================== INTRO OVERLAY ===================== */}
       <div
         className={`absolute inset-0 flex flex-col items-center justify-center 
         transition-opacity duration-1000
-        ${showIntro ? "opacity-100" : "opacity-0 "}
+        ${showIntro ? "opacity-100" : "opacity-0 pointer-events-none"}
         `}
       >
         <h1 className="text-4xl font-bold mb-2 text-white drop-shadow-md">
@@ -106,79 +106,125 @@ useEffect(() => {
         ${showMain ? "opacity-100" : "opacity-0"}
       `}
       >
+        {/* border-2 border-black border-solid */}
         {/* Top 2/3 */}
-        <div className="border-2 border-black border-solid bg-gray-400 h-2/3 flex flex-col xl:flex-row xl:w-[90%] xl:ml-auto xl:mr-auto items-center xl:items-end justify-center">
+        <div className="h-[70vh] xl:h-[60vh] flex flex-col xl:flex-row xl:w-[70%] xl:ml-auto xl:mr-auto items-center xl:items-end justify-center">
 
           {/* Picture and Name */}
-          <div className="border-2 border-black border-solid bg-gray-400 max-h-[40%] xl:max-h-none xl:h-[80%] xl:w-1/3 flex flex-col items-center justify-center">
+          <div className="h-[30vh] xl:h-[50vh] xl:w-1/3 flex flex-col items-center justify-center">
             
             {/* Picture */}
-            <div className="border-2 border-black border-solid bg-gray-400 max-h-[75%] xl:max-h-none pt-1">
+            <div className="">
               <img
                 src={profileImg}
-                className="border-2 border-black border-solid w-full h-full rounded-full object-cover"
+                className="ring-4 shadow-[0_0_40px_rgba(255,255,255,0.08)] ring-white/20 w-[25vh] h-[25vh] xl:w-[35vh] xl:h-[35vh] rounded-full object-cover"
               />
             </div>
 
-            {/* Name */}
-            <h3 className="border-2 border-black border-solid text-center text-lg font-bold bg-yellow-200 rounded mt-2 p-1 max-h-[25%] xl:max-h-none">
-              Hi, I'm Namrath Lakkadi
-            </h3>
+            
           </div>
 
           {/* Title, skills and Summary */}
-          <div className="border-2 border-black border-solid max-h-[60%] xl:max-h-none xl:h-[80%] xl:w-2/3 flex flex-col justify-center">
-
+          <div className="xl:pl-10 h-[35vh] xl:h-[50vh] xl:w-2/3 flex flex-col justify-center">
+           <div className="h-[35vh] xl:h-[35vh] flex flex-col justify-between">
+            {/* Name */}
+            <h3 className="w-fit h-[5vh] leading-[5vh] mx-auto xl:ml-0 px-2  text-center text-lg bg-[#FFEFA0] rounded ">
+              Hi, I'm Namrath
+            </h3>
             {/* Title */}
-            <div className="border-2 border-black border-solid p-1 xl:max-h-none">
-              <h5 className="border-2 border-black border-solid bg-red-200 rounded p-2 text-center text-md xl:text-start w-fit ml-auto mr-auto xl:ml-0">
+            
+              <h5 className="mx-auto h-[5vh] leading-[5vh]  py-auto xl:ml-0 px-2 bg-[#FFD3D3] rounded text-center text-md w-fit">
                 Frontend/FullStack Developer
               </h5>
-            </div>
+            
 
             {/* Skills */}
-            <div className="border-2 border-black border-solid h-fit xl:max-h-none flex flex-row justify-center p-1 xl:justify-start text-sm sm:gap-3">
-              <p className="border-2 border-black border-solid bg-blue-200 rounded p-1">React</p>
-              <p className="border-2 border-black border-solid bg-blue-200 rounded p-1">NextJs</p>
-              <p className="border-2 border-black border-solid bg-blue-200 rounded p-1">Tailwind</p>
-              <p className="border-2 border-black border-solid bg-blue-200 rounded p-1">NodeJs</p>
-              <p className="border-2 border-black border-solid bg-blue-200 rounded p-1">SQL</p>
+            <div className="h-[4vh] flex flex-row justify-evenly md:justify-center xl:justify-start items-center text-sm md:gap-3">
+              <p className=" bg-[#B5D7FF] rounded px-2 leading-[4vh]  h-[4vh]">React</p>
+              <p className=" bg-[#B5D7FF] rounded px-2 leading-[4vh]  h-[4vh]">NextJs</p>
+              <p className=" bg-[#B5D7FF] rounded px-2 leading-[4vh]  h-[4vh]">Tailwind</p>
+              <p className=" bg-[#B5D7FF] rounded px-2 leading-[4vh]  h-[4vh]">NodeJs</p>
+              <p className=" bg-[#B5D7FF] rounded px-2 leading-[4vh]  h-[4vh]">SQL</p>
             </div>
 
             {/* Summary */}
-            <div className="border-2 border-black border-solid p-1 pt-3 max-h-[58%] xl:max-h-none">
-              <p className="border-2 border-black border-solid bg-green-200 rounded text-center text-sm p-1 pt-0 h-full xl:max-h-none hide-scroll-1 hide-scroll-2 overflow-scroll">
+            {/* bg-[#C4FBC9] */}
+            {/* had to put px-1 for 12-pro instead of px-2 for all */}
+            <div className="max-sm:h-[18vh] h-[15vh]  max-xl:mx-1 px-1 sm:px-2 bg-[#C4FBC9]  rounded text-center text-lg flex flex-col justify-center items-center xl:items-start xl:text-start">
+              <p className="">
                 I care about clarity in my code, impact in my projects,
                 collaboration in my process, and real connection with the people I
-                build for — and with.
+                build for, and with.
               </p>
             </div>
+              
+            
+           </div>
           </div>
         </div>
-
+ 
         {/* Bottom */}
-        <div className="h-1/3 w-full bg-[#FDF6E3] flex flex-col items-center pt-6 gap-3">
+        {/* bg-[#FFF7E6]/80  */}
+        <div className="h-[30vh] xl:h-[40vh] w-full bg-[#FFF9ED]/90  flex flex-col items-center justify-start pt-[2vh] md:pt-[5vh] gap-[2vh]">
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <button className="bg-blue-200 rounded px-3 py-1" onClick={() => scrollToSection(1)}>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-[2vh]">
+            <button className="
+       bg-[#CFE4FF]
+       hover:bg-[#B5D7FF] 
+       border border-[#6AA8FF]
+       rounded-xl 
+       shadow-[0_2px_6px_rgba(0,0,0,0.1)]
+       hover:shadow-[0_4px_10px_rgba(0,0,0,0.15)]
+       hover:-translate-y-[5px]
+       transition-all duration-200 
+       px-2 py-[.25vh]" onClick={() => scrollToSection(1)}>
               <span className="text-md font-bold block">BLUE</span>
               <span className="text-sm block">Skills & Tech</span>
             </button>
-            <button className="bg-red-200 rounded px-3 py-1" onClick={() => scrollToSection(2)}>
+            <button className="bg-[#FFD3D3] 
+       hover:bg-[#FFBFBF] 
+       border border-[#FF8A8A]
+       rounded-xl 
+       shadow-[0_2px_6px_rgba(0,0,0,0.1)]
+       hover:shadow-[0_4px_10px_rgba(0,0,0,0.15)]
+       hover:-translate-y-[5px]
+       transition-all duration-200 px-2 py-[.25vh]" onClick={() => scrollToSection(2)}>
               <span className="text-md font-bold block">RED</span>
               <span className="text-sm block">Projects & Impact</span>
             </button>
-            <button className="bg-green-200 rounded px-3 py-1" onClick={() => scrollToSection(3)}>
+            <button className="bg-[#D8FFDC] 
+       hover:bg-[#C4FBC9] 
+       border border-[#74D88A]
+       rounded-xl 
+       shadow-[0_2px_6px_rgba(0,0,0,0.1)]
+       hover:shadow-[0_4px_10px_rgba(0,0,0,0.15)]
+       hover:-translate-y-[5px]
+       transition-all duration-200 px-2 py-[.25vh]" onClick={() => scrollToSection(3)}>
               <span className="text-md font-bold block">GREEN</span>
               <span className="text-sm block">My Work Style</span>
             </button>
-            <button className="bg-yellow-200 rounded px-3 py-1" onClick={() => scrollToSection(4)}>
+            <button className="bg-[#FFF2B8] 
+       hover:bg-[#FFEFA0] 
+       border border-[#E6C653]
+       rounded-xl 
+       shadow-[0_2px_6px_rgba(0,0,0,0.1)]
+       hover:shadow-[0_4px_10px_rgba(0,0,0,0.15)]
+       hover:-translate-y-[5px]
+       transition-all duration-200  px-2 py-[.25vh]" onClick={() => scrollToSection(4)}>
               <span className="text-md font-bold block">YELLOW</span>
               <span className="text-sm block">Connect With Me</span>
             </button>
           </div>
 
-          <button className="text-white bg-gray-700 rounded-md px-3 py-1" onClick={() => scrollToSection(1)}>
+          <button className="text-white bg-gray-700 px-2 py-[1vh]
+          hover:bg-gray-900
+          rounded-xl 
+       shadow-[0_2px_6px_rgba(0,0,0,0.1)]
+       hover:shadow-[0_4px_10px_rgba(0,0,0,0.15)]
+       hover
+       hover:-translate-y-[5px]
+       transition-all duration-200
+          " onClick={() => scrollToSection(1)}>
             Explore all colors
           </button>
         </div>

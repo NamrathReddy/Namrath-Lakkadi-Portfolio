@@ -85,10 +85,49 @@ export default function YellowSection({
 
       {/* CONNECT */}
       <div
-        className={`absolute inset-0 flex items-center justify-center transition-opacity duration-700
+        className={`absolute inset-0 transition-opacity duration-700
         ${showConnect ? "opacity-100" : "opacity-0"}`}
       >
-        Connect buttons go here…
+        <div className="h-dvh py-[10vh] flex flex-col items-center justify-between">
+
+          <h2 className="text-2xl md:text-3xl font-semibold text-center">
+            I keep the door open - reach out anytime.
+          </h2>
+
+          <div className="text-center">
+            <p>
+              Fastest way to reach me
+            </p>
+            <button className="bg-white/80 border-2 border-black rounded-lg p-3 flex flex-row items-center justify-center">
+              <span className="w-7 h-7 flex items-center justify-center">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="black"
+    viewBox="0 0 24 24"
+    stroke="black"
+    className="w-6 h-6"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.5"
+      d="M3.75 4.5h16.5c.414 0 .75.336.75.75v13.5a.75.75 0 0 1-.75.75H3.75a.75.75 0 0 1-.75-.75V5.25c0-.414.336-.75.75-.75zm0 0 8.25 6 8.25-6"
+    />
+  </svg>
+</span>
+
+              <span>namrathreddy25@gmail.com</span>
+            </button>
+          </div>
+
+          <p className="text-xl">Thanks for stopping by.</p>
+
+          <div className="h-[10vh] bg-black text-white flex flex-col justify-center items-center w-full text-center">
+                      
+              <p>© 2025 Namrath Lakkadi — All rights reserved.</p>
+          </div>
+
+        </div>
       </div>
 
     </section>

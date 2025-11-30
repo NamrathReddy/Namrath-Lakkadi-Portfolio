@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 
 const sectionConfig = [
-  { id: "landing", label: "Over view", type: "landing", bgClass: "bg-[#FFF9ED]" },
+  { id: "landing", label: "Over view", type: "landing", bgClass: "bg-[#FFF9ED]", bgColor: "bg-[#CFE4FF]" },
   { id: "blue", label: "Skills & Tech", type: "color", bgClass: "bg-blue-600" },
   { id: "red", label: "Projects & Impact", type: "color", bgClass: "bg-red-600" },
   { id: "green", label: "My Work Style", type: "color", bgClass: "bg-green-600" },
   { id: "yellow", label: "Connect With Me", type: "color", bgClass: "bg-yellow-500" },
 ];
-let noAnimations= false;
+// let noAnimations= false;
 export default function FloatyShell({
   currentSectionIndices,
   scrollToSection,
   locked,
-  disableAnimations
+  // disableAnimations
 }) {
     //temporarily disabling animations
   // disableAnimations(true);
@@ -42,7 +42,8 @@ export default function FloatyShell({
 
   function LandingExpanded() {
     return (
-      <div className="h-full px-4 pt-4 pb-20 xl:pb-4 text-sm md:text-base flex flex-col justify-center items-center"
+      <div className="h-dvh flex flex-col justify-center items-center">
+        <div className="h-[80%] w-[80%] bg-[#FFF9ED] p-3 rounded-lg text-center text-black text-sm flex flex-col justify-center items-center"
       onClick={() => setIsOpen((prev) => !prev)}
       >
         <h3 className="font-semibold mb-2">Why 4 Colors?</h3>
@@ -51,20 +52,22 @@ export default function FloatyShell({
           Green, Yellow, and Red. Each reflects how someone prefers to think,
           collaborate, and decide.
         </p>
-        <ul className="list-disc list-inside space-y-1">
-          <li><strong>Blue</strong> — precise, analytical, detail-driven.</li>
-          <li><strong>Green</strong> — supportive, calm, people-first.</li>
-          <li><strong>Yellow</strong> — optimistic, energetic, visionary.</li>
-          <li><strong>Red</strong> — decisive, bold, action-focused.</li>
+        <ul className="list-disc list-inside text-start space-y-1">
+          <li className="bg-[#6AA8FF] py-1 px-2 rounded-lg"><strong>Blue</strong> — precise, analytical, detail-driven...</li>
+          <li className="bg-[#FF8A8A] py-1 px-2 rounded-lg"><strong>Red</strong> — decisive, bold, action-focused...</li>
+          <li className="bg-[#74D88A] py-1 px-2 rounded-lg"><strong>Green</strong> — supportive, calm, people-first...</li>
+          <li className="bg-[#E6C653] py-1 px-2 rounded-lg"><strong>Yellow</strong> — optimistic, energetic, visionary...</li>
         </ul>
         <p className="mt-3">
           My portfolio uses these four colors to show different sides of how I think and work.
         </p>
-        <p>To disable intro animations click "⏹️"</p>
+        {/* <p>To disable intro animations click "⏹️"</p> */}
         <button 
-          className="border-2 border-black p-1 rounded-full mt-[10vh]"
+          className="bg-black text-white border-2 p-1 h-12 w-12 rounded-full mt-[10vh]"
           >X</button>
       </div>
+      </div>
+      
     );
   }
 
@@ -93,7 +96,7 @@ export default function FloatyShell({
           ))}
           <button 
           onClick={() => setIsOpen((prev) => !prev)}
-          className="border-2 border-black p-1 rounded-full h-12 w-12 mt-12"
+          className=" border-2 border-black p-1 rounded-full h-12 w-12 mt-12"
           >X</button>
         </div>
     );
@@ -122,7 +125,7 @@ export default function FloatyShell({
               }>{noAnimations?"▶️":"⏹️"}</button> */}
               <button onClick={() => setIsOpen((prev) => !prev)}
                 >
-                  <span className="bg-black text-white text-sm h-5 w-5 px-2 py-1 mr-2 rounded-full">?</span>
+                  <span className="bg-gray-600 text-black text-sm h-5 w-5 px-2 py-1 mr-2 rounded-full">?</span>
                   </button>
             </div>)
           ): (isOpen?

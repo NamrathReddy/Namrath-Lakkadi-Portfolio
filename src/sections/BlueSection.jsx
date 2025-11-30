@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const INTRO_DURATION = 4000; // 5 seconds
+const INTRO_DURATION = 3000; // 5 seconds
 
 // ----------------------
 //  SVG ICON COMPONENTS
@@ -131,7 +131,7 @@ function Skill({ icon, label }) {
 // ----------------------
 function Category({ title, skills }) {
   return (
-    <div className="bg-blue-100 rounded-xl border border-blue-200 shadow-lg pb-[1vh] w-[90%] xl:w-2/3">
+    <div className="bg-blue-100 rounded-xl border border-blue-200 shadow-lg shadow-blue-300 pb-[1vh] w-[90%] xl:w-2/3">
       <h3 className="text-blue-800 font-semibold px-2 py-[1vh] text-lg lg:text-xl">{title}</h3>
 
       <div className="grid grid-cols-1 gap-[.5vh]">
@@ -185,8 +185,8 @@ useEffect(() => {
     setShowIntro(true);
     setShowSkills(false);
 
-    introTimer.current = setTimeout(() => setShowIntro(false), 3000);
-    skillsTimer.current = setTimeout(() => setShowSkills(true), 4000);
+    introTimer.current = setTimeout(() => setShowIntro(false), 2500);
+    skillsTimer.current = setTimeout(() => setShowSkills(true), 3000);
 
     lockTimer.current = setTimeout(() => {
       if (onIntroComplete) onIntroComplete();
@@ -210,22 +210,21 @@ useEffect(() => {
   }, []);
 
   return (
-    <section className="h-dvh w-full bg-blue-200 relative overflow-hidden snap-start snap-always">
+    <section className="h-dvh w-full bg-[#CFE4FF] relative overflow-hidden snap-start snap-always">
 
       {/* INTRO */}
       <div
-        className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-1000 
+        className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 font-serif italic font-bold
           ${showIntro ? "opacity-100" : "opacity-0"}
         `}
       >
-        <h1 className="text-4xl font-bold mb-2">My Blue Side.</h1>
-        <h2 className="text-2xl font-semibold mb-1">Depth & Expertise.</h2>
-        <p className="text-md opacity-80">The foundation of my technical skills.</p>
+        <h1 className="text-4xl mb-3">My Blue Side.</h1>
+        <p className="text-lg ">Skills & Learning Style</p>
       </div>
 
       {/* SKILLS */}
       <div
-        className={`absolute inset-0 transition-opacity duration-1000 snap-y snap-mandatory
+        className={`absolute inset-0 transition-opacity duration-500 snap-y snap-mandatory
           ${showSkills ? "opacity-100 overflow-scroll" : "opacity-0"}
         `}
       >
@@ -267,7 +266,7 @@ useEffect(() => {
               { icon: "rest", label: "REST APIs" },
               { icon: "rest", label: "Axios Interceptors" },
               { icon: "zod", label: "Zod validation" },
-              { icon: "postgres", label: "Basic PostgreSQL" },
+              { icon: "postgres", label: "SQL databases" },
             ]}
           />
           <Category
@@ -286,8 +285,8 @@ useEffect(() => {
             ]}
           />
           </div>
-          <div className="h-dvh md:h-full md:col-span-2 bg-blue-300 flex flex-row justify-center items-center md:items-start  px-2 snap-start md:snap-none">
-            <div className="text-xl md:h-[10vh] flex flex-col items-center justify-center text-center text-blue-500 font-medium">
+          <div className="h-dvh md:h-full md:col-span-2 bg-[#B5D7FF] flex flex-row justify-center items-center md:items-start  px-2 snap-start md:snap-none">
+            <div className="text-xl font-serif italic md:h-[10vh] flex flex-col items-center justify-center text-center text-black font-medium">
               <h1>My learning style is analytical: I research thoroughly, clarify concepts, and build knowledge step by step.</h1>
             </div>
             

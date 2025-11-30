@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import profileImg from "../assets/plain5.webp";
+import profileImg from "../assets/plain6.webp";
 
-const INTRO_DURATION = 4500; // extend if you want the landing to be slower
+const INTRO_DURATION = 3500; // extend if you want the landing to be slower
 
 export default function LandingSection({
   playIntro,
@@ -12,6 +12,10 @@ export default function LandingSection({
 }) {
   const [showIntro, setShowIntro] = useState(false);
   const [showMain, setShowMain] = useState(false);
+
+  const [typedText, setTypedText] = useState("");
+  const introMessage = "Let me introduce myself...";
+
 
   const introTimer = useRef(null);
   const mainTimer = useRef(null);
@@ -61,6 +65,26 @@ useEffect(() => {
     }
   }, [playIntro, locked, onIntroComplete]);
 
+  // TYPEWRITER EFFECT
+useEffect(() => {
+  if (showIntro) {
+    let index = 0;
+
+    const interval = setInterval(() => {
+      setTypedText(introMessage.slice(0, index));
+      index++;
+
+      if (index > introMessage.length) clearInterval(interval);
+    }, 70);
+
+    return () => clearInterval(interval);
+  } else {
+    // reset for future replays
+    setTypedText("");
+  }
+}, [showIntro]);
+
+
   // -------------------------------
   // ABORT SEQUENCE
   // -------------------------------
@@ -79,8 +103,12 @@ useEffect(() => {
     return () => clearAllTimers();
   }, []);
 
+
+      //bg-[#FFF9ED]/90
   return (
-    <section className="h-dvh w-full bg-black font-semibold snap-start snap-always relative overflow-hidden">
+    <section className="h-dvh w-full text-[#FFF9ED]/90  
+    bg-[linear-gradient(to_right,_#CFE4FF_0%,_#FFD3D3_33%,_#D8FFDC_66%,_#FFF2B8_100%)]
+    font-serif italic font-semibold snap-start snap-always relative overflow-hidden">
 
       {/* ===================== INTRO OVERLAY ===================== */}
       <div
@@ -89,15 +117,11 @@ useEffect(() => {
         ${showIntro ? "opacity-100" : "opacity-0 pointer-events-none"}
         `}
       >
-        <h1 className="text-4xl font-bold mb-2 text-white drop-shadow-md">
-          Welcome 👋
+        <h1 className=" text-center text-3xl xl:text-5xl text-black tracking-wide">
+          {typedText}
         </h1>
-        <h2 className="text-lg text-white opacity-90">
-          I'm <span className="font-semibold">Namrath Lakkadi</span>
-        </h2>
-        <p className="text-white opacity-80 mt-2">
-          Frontend / Full-Stack Developer
-        </p>
+        
+        {/* <span className="text-black p-3 mt-3">welcome!</span> */}
       </div>
 
       {/* ===================== MAIN LANDING CONTENT ===================== */}
@@ -117,7 +141,7 @@ useEffect(() => {
             <div className="">
               <img
                 src={profileImg}
-                className="ring-4 shadow-[0_0_40px_rgba(255,255,255,0.08)] ring-white/20 w-[25vh] h-[25vh] xl:w-[35vh] xl:h-[35vh] rounded-full object-cover"
+                className="ring-4  shadow-lg shadow-black/50 ring-white/20 w-[25vh] h-[25vh] xl:w-[35vh] xl:h-[35vh] rounded-full object-cover"
               />
             </div>
 
@@ -128,33 +152,33 @@ useEffect(() => {
           <div className="xl:pl-10 h-[35vh] xl:h-[50vh] xl:w-2/3 flex flex-col justify-center">
            <div className="h-[35vh] xl:h-[35vh] flex flex-col justify-between">
             {/* Name */}
-            <h3 className="w-fit h-[5vh] leading-[5vh] mx-auto xl:ml-0 px-2  text-center text-lg bg-[#FFEFA0] rounded ">
+            <h3 className="w-fit h-[5vh] leading-[5vh] mx-auto xl:ml-0 px-3 shadow-lg shadow-black/50 text-center text-lg bg-gray-950 rounded-full ">
               Hi, I'm Namrath
             </h3>
             {/* Title */}
             
-              <h5 className="mx-auto h-[5vh] leading-[5vh]  py-auto xl:ml-0 px-2 bg-[#FFD3D3] rounded text-center text-md w-fit">
+              <h5 className="mx-auto h-[5vh] leading-[5vh]  py-auto xl:ml-0 px-3 bg-gray-950 shadow-lg shadow-black/50 rounded-full text-center text-md w-fit">
                 Frontend/FullStack Developer
               </h5>
             
 
             {/* Skills */}
             <div className="h-[4vh] flex flex-row justify-evenly md:justify-center xl:justify-start items-center text-sm md:gap-3">
-              <p className=" bg-[#B5D7FF] rounded px-2 leading-[4vh]  h-[4vh]">React</p>
-              <p className=" bg-[#B5D7FF] rounded px-2 leading-[4vh]  h-[4vh]">NextJs</p>
-              <p className=" bg-[#B5D7FF] rounded px-2 leading-[4vh]  h-[4vh]">Tailwind</p>
-              <p className=" bg-[#B5D7FF] rounded px-2 leading-[4vh]  h-[4vh]">NodeJs</p>
-              <p className=" bg-[#B5D7FF] rounded px-2 leading-[4vh]  h-[4vh]">SQL</p>
+              <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full px-2 sm:px-3 leading-[4vh]  h-[4vh]">React</p>
+              <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full px-2 sm:px-3 leading-[4vh]  h-[4vh]">NextJs</p>
+              <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full px-2 sm:px-3 leading-[4vh]  h-[4vh]">Tailwind</p>
+              <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full px-2 sm:px-3 leading-[4vh]  h-[4vh]">NodeJs</p>
+              <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full px-2 sm:px-3 leading-[4vh]  h-[4vh]">SQL</p>
             </div>
 
             {/* Summary */}
             {/* bg-[#C4FBC9] */}
-            {/* had to put px-1 for 12-pro instead of px-2 for all */}
-            <div className="max-sm:h-[18vh] h-[15vh]  max-xl:mx-1 px-1 sm:px-2 bg-[#C4FBC9]  rounded text-center text-lg flex flex-col justify-center items-center xl:items-start xl:text-start">
+            {/* had to put px-1 for 12-pro instead of px-3 for all */}
+            <div className="max-sm:h-[18vh] leading-tight h-[15vh] shadow-xl shadow-black/50 rounded-2xl mx-1 md:mx-3 xl:mx-0 px-1  sm:px-3 bg-gray-950 text-center text-lg flex flex-col justify-center items-center xl:items-start xl:text-start">
               <p className="">
                 I care about clarity in my code, impact in my projects,
                 collaboration in my process, and real connection with the people I
-                build for, and with.
+                build for, and with
               </p>
             </div>
               
@@ -165,16 +189,16 @@ useEffect(() => {
  
         {/* Bottom */}
         {/* bg-[#FFF7E6]/80  */}
-        <div className="h-[30vh] xl:h-[40vh] w-full bg-[#FFF9ED]/90  flex flex-col items-center justify-start pt-[2vh] md:pt-[5vh] gap-[2vh]">
+        <div className="h-[30vh] xl:h-[40vh] w-full bg-black font-sans  text-black flex flex-col items-center justify-start pt-[2vh] md:pt-[5vh] gap-[2.5vh]">
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-[2vh]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-[2.5vh]">
             <button className="
        bg-[#CFE4FF]
        hover:bg-[#B5D7FF] 
        border border-[#6AA8FF]
        rounded-xl 
-       shadow-[0_2px_6px_rgba(0,0,0,0.1)]
-       hover:shadow-[0_4px_10px_rgba(0,0,0,0.15)]
+       shadow-lg shadow-[#CFE4FF]
+       hover:shadow-[0_4px_10px_#CFE4FF]
        hover:-translate-y-[5px]
        transition-all duration-200 
        px-2 py-[.25vh]" onClick={() => scrollToSection(1)}>
@@ -185,8 +209,8 @@ useEffect(() => {
        hover:bg-[#FFBFBF] 
        border border-[#FF8A8A]
        rounded-xl 
-       shadow-[0_2px_6px_rgba(0,0,0,0.1)]
-       hover:shadow-[0_4px_10px_rgba(0,0,0,0.15)]
+       shadow-lg shadow-[#FFD3D3]
+       hover:shadow-[0_4px_10px_#FFD3D3]
        hover:-translate-y-[5px]
        transition-all duration-200 px-2 py-[.25vh]" onClick={() => scrollToSection(2)}>
               <span className="text-md font-bold block">RED</span>
@@ -196,8 +220,8 @@ useEffect(() => {
        hover:bg-[#C4FBC9] 
        border border-[#74D88A]
        rounded-xl 
-       shadow-[0_2px_6px_rgba(0,0,0,0.1)]
-       hover:shadow-[0_4px_10px_rgba(0,0,0,0.15)]
+       shadow-lg shadow-[#D8FFDC]
+       hover:shadow-[0_4px_10px_#D8FFDC]
        hover:-translate-y-[5px]
        transition-all duration-200 px-2 py-[.25vh]" onClick={() => scrollToSection(3)}>
               <span className="text-md font-bold block">GREEN</span>
@@ -207,8 +231,8 @@ useEffect(() => {
        hover:bg-[#FFEFA0] 
        border border-[#E6C653]
        rounded-xl 
-       shadow-[0_2px_6px_rgba(0,0,0,0.1)]
-       hover:shadow-[0_4px_10px_rgba(0,0,0,0.15)]
+       shadow-lg shadow-[#FFF2B8]
+       hover:shadow-[0_4px_10px_#FFF2B8]
        hover:-translate-y-[5px]
        transition-all duration-200  px-2 py-[.25vh]" onClick={() => scrollToSection(4)}>
               <span className="text-md font-bold block">YELLOW</span>
@@ -216,12 +240,11 @@ useEffect(() => {
             </button>
           </div>
 
-          <button className="text-white bg-gray-700 px-2 py-[1vh]
+          <button className="text-[#FFF9ED]/90 bg-gray-800 px-2 py-[1vh]
           hover:bg-gray-900
           rounded-xl 
-       shadow-[0_2px_6px_rgba(0,0,0,0.1)]
-       hover:shadow-[0_4px_10px_rgba(0,0,0,0.15)]
-       hover
+       shadow-lg shadow-gray-500
+       hover:shadow-[0_4px_10px_#6b7280]
        hover:-translate-y-[5px]
        transition-all duration-200
           " onClick={() => scrollToSection(1)}>

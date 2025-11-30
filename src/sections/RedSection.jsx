@@ -52,7 +52,7 @@ const projectsConfig = [
 function Card({ projectName, type, problem, action, impact }) {
   return (
     <div className="h-dvh md:h-auto pb-[10vh] md:pb-0 max-sm:snap-start flex flex-col justify-center items-center w-full">
-    <div className="bg-red-50 h-fit rounded-xl border border-red-200 shadow-sm pb-2 w-[80%]">
+    <div className="bg-red-100 h-fit rounded-xl border border-red-200 shadow-lg shadow-red-300 pb-2 w-[80%]">
       {/* Title */}
       <h3 className="text-red-700 font-semibold px-2 py-1 text-lg">{projectName}</h3>
       <p className="text-sm text-gray-700 px-2 mb-2"><span className="font-semibold text-red-800">Type: </span>{type}</p>
@@ -166,9 +166,9 @@ useEffect(() => {
               <Card projectName={projectsConfig[2].project} type={projectsConfig[2].type} problem={projectsConfig[2].problem} action={projectsConfig[2].action} impact={projectsConfig[2].impact}><div className="snap-start"></div></Card>
             </div>
             
-            <div className="h-dvh bg-red-300 w-full md:h-[20vh] pb-[10vh] flex flex-col justify-center  items-center max-sm:snap-start">
+            <div className="h-dvh bg-[#FFBFBF] w-full md:h-[20vh] pb-[10vh] flex flex-col justify-center  items-center max-sm:snap-start">
               <div className="md:h-[10vh] flex flex-col justify-center">
-                <h1 className="text-center text-xl font-medium px-2">I aim to maximize impact and improve performance, without losing sight of deadlines.</h1>
+                <h1 className="text-center font-serif italic text-xl font-medium px-2">I aim to maximize impact and improve performance, without losing sight of deadlines.</h1>
               </div>
             </div>
           </div>

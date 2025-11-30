@@ -71,7 +71,7 @@ export default function YellowSection({
   }, []);
 
   return (
-    <section className="h-dvh w-full bg-yellow-200 relative snap-start snap-always overflow-hidden">
+    <section className="h-dvh w-full bg-[#FFEFA0] relative snap-start snap-always overflow-hidden">
 
       {/* INTRO */}
       <div
@@ -94,11 +94,11 @@ export default function YellowSection({
             I keep the door open - reach out anytime.
           </h2>
 
-          <div className="text-center">
+          <div className="text-center font-semibold ">
             <p>
               Fastest way to reach me
             </p>
-            <button className="bg-white/80 border-2 border-black rounded-lg p-3 flex flex-row items-center justify-center">
+            <button className="bg-white/80 border-2 border-black rounded-lg p-3 flex flex-row items-center justify-center shadow-lg shadow-black/50">
               <span className="w-7 h-7 flex items-center justify-center">
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -116,13 +116,13 @@ export default function YellowSection({
   </svg>
 </span>
 
-              <span>namrathreddy25@gmail.com</span>
+              <span className="font-bold">namrathreddy25@gmail.com</span>
             </button>
           </div>
 
-          <p className="text-xl">Thanks for stopping by.</p>
+          <p className="text-xl font-semibold">Thanks for stopping by.</p>
 
-          <div className="h-[10vh] bg-black text-white flex flex-col justify-center items-center w-full text-center">
+          <div className="h-[10vh] bg-black text-white flex flex-col justify-center items-center w-full text-center px-1">
                       
               <p>© 2025 Namrath Lakkadi — All rights reserved.</p>
           </div>

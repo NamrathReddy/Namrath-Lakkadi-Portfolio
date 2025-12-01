@@ -11,6 +11,10 @@ export default function YellowSection({
 }) {
   const [showIntro, setShowIntro] = useState(false);
   const [showConnect, setShowConnect] = useState(false);
+  const [typedHeading, setTypedHeading] = useState("");
+  const [typedSub, setTypedSub] = useState("");
+  const headingMessage = "My Yellow Side";
+  const subMessage = "Connection & Opportunity";
 
   const introTimer = useRef(null);
   const connectTimer = useRef(null);
@@ -56,6 +60,44 @@ export default function YellowSection({
     }
   }, [playIntro, locked, onIntroComplete]);
 
+  // TYPEWRITER EFFECT FOR INTRO TEXT
+  useEffect(() => {
+    if (showIntro) {
+      let i1 = 0;
+      let i2 = 0;
+      let headingInterval;
+      let subInterval;
+      let subDelay;
+
+      headingInterval = setInterval(() => {
+        setTypedHeading(headingMessage.slice(0, i1));
+        i1 += 1;
+
+        if (i1 > headingMessage.length) {
+          clearInterval(headingInterval);
+
+          subDelay = setTimeout(() => {
+            subInterval = setInterval(() => {
+              setTypedSub(subMessage.slice(0, i2));
+              i2 += 1;
+
+              if (i2 > subMessage.length) clearInterval(subInterval);
+            }, 70);
+          }, 200);
+        }
+      }, 70);
+
+      return () => {
+        clearInterval(headingInterval);
+        clearInterval(subInterval);
+        clearTimeout(subDelay);
+      };
+    }
+
+    setTypedHeading("");
+    setTypedSub("");
+  }, [showIntro]);
+
   // ⭐ ABORT INTRO
   useEffect(() => {
     if (abortIntro && !locked) {
@@ -78,8 +120,12 @@ export default function YellowSection({
         className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-700
         ${showIntro ? "opacity-100" : "opacity-0"}`}
       >
-        <h1 className="text-4xl font-bold mb-3">My Yellow Side</h1>
-        <h2 className="text-lg font-semibold">Connection & Opportunity</h2>
+        <h1 className="text-4xl font-bold mb-3">
+          {showIntro ? typedHeading : typedHeading || headingMessage}
+        </h1>
+        <h2 className="text-lg font-semibold">
+          {showIntro ? typedSub : typedSub || subMessage}
+        </h2>
       </div>
 
       {/* CONNECT */}
@@ -87,7 +133,7 @@ export default function YellowSection({
         className={`absolute inset-0 transition-opacity duration-700
         ${showConnect ? "opacity-100" : "opacity-0"}`}
       >
-        <div className="h-dvh py-[10vh] flex flex-col items-center justify-between">
+        <div className="h-dvh py-[10dvh] flex flex-col items-center justify-between">
 
           <h2 className="text-2xl md:text-3xl font-semibold text-center">
             I keep the door open - reach out anytime.
@@ -121,7 +167,7 @@ export default function YellowSection({
 
           <p className="text-xl font-semibold">Thanks for stopping by.</p>
 
-          <div className="h-[10vh] bg-black text-white flex flex-col justify-center items-center w-full text-center px-1">
+          <div className="h-[10dvh] bg-black text-white flex flex-col justify-center items-center w-full text-center px-1">
                       
               <p>© 2025 Namrath Lakkadi — All rights reserved.</p>
           </div>

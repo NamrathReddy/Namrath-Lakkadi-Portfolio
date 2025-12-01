@@ -51,7 +51,7 @@ const projectsConfig = [
 
 function Card({ projectName, type, problem, action, impact }) {
   return (
-    <div className="h-dvh md:h-auto pb-[10vh] md:pb-0 max-sm:snap-start flex flex-col justify-center items-center w-full">
+    <div className="h-dvh md:h-auto pb-[10dvh] md:pb-0 max-sm:snap-start flex flex-col justify-center items-center w-full">
     <div className="bg-red-100 h-fit rounded-xl border border-red-200 shadow-lg shadow-red-300 pb-2 w-[80%]">
       {/* Title */}
       <h3 className="text-red-700 font-semibold px-2 py-1 text-lg">{projectName}</h3>
@@ -77,6 +77,10 @@ export default function RedSection({
 }) {
   const [showIntro, setShowIntro] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
+  const [typedHeading, setTypedHeading] = useState("");
+  const [typedSub, setTypedSub] = useState("");
+  const headingMessage = "My Red Side";
+  const subMessage = "Execution. Delivery. Impact.";
 
   const introTimer = useRef(null);
   const projectsTimer = useRef(null);
@@ -123,6 +127,44 @@ useEffect(() => {
     }
   }, [playIntro, locked, onIntroComplete]);
 
+  // TYPEWRITER EFFECT FOR INTRO TEXT
+  useEffect(() => {
+    if (showIntro) {
+      let i1 = 0;
+      let i2 = 0;
+      let headingInterval;
+      let subInterval;
+      let subDelay;
+
+      headingInterval = setInterval(() => {
+        setTypedHeading(headingMessage.slice(0, i1));
+        i1 += 1;
+
+        if (i1 > headingMessage.length) {
+          clearInterval(headingInterval);
+
+          subDelay = setTimeout(() => {
+            subInterval = setInterval(() => {
+              setTypedSub(subMessage.slice(0, i2));
+              i2 += 1;
+
+              if (i2 > subMessage.length) clearInterval(subInterval);
+            }, 70);
+          }, 200);
+        }
+      }, 70);
+
+      return () => {
+        clearInterval(headingInterval);
+        clearInterval(subInterval);
+        clearTimeout(subDelay);
+      };
+    }
+
+    setTypedHeading("");
+    setTypedSub("");
+  }, [showIntro]);
+
   // ⭐ ABORT INTRO
   useEffect(() => {
     if (abortIntro && !locked) {
@@ -145,8 +187,12 @@ useEffect(() => {
         className={`absolute inset-0 font-serif italic flex flex-col items-center justify-center transition-opacity duration-700 
         ${showIntro ? "opacity-100 " : "opacity-0"}`}
       >
-        <h1 className="text-4xl font-bold mb-3">My Red Side</h1>
-        <h2 className="text-lg font-semibold mt-1">Execution. Delivery. Impact.</h2>
+        <h1 className="text-4xl font-bold mb-3">
+          {showIntro ? typedHeading : typedHeading || headingMessage}
+        </h1>
+        <h2 className="text-lg font-semibold mt-1">
+          {showIntro ? typedSub : typedSub || subMessage}
+        </h2>
       </div>
 
       {/* PROJECTS */}
@@ -155,18 +201,18 @@ useEffect(() => {
         ${showProjects ? "opacity-100 overflow-scroll " : "opacity-0"}`}
       >
         <div className="grid grid-cols-1">
-          <div className="md:h-dvh md:pb-[10vh] flex flex-col justify-evenly items-center md:snap-start">
+          <div className="md:h-dvh md:pb-[10dvh] flex flex-col justify-evenly items-center md:snap-start">
             <Card projectName={projectsConfig[0].project} type={projectsConfig[0].type} problem={projectsConfig[0].problem} action={projectsConfig[0].action} impact={projectsConfig[0].impact}></Card>
             <Card projectName={projectsConfig[1].project} type={projectsConfig[1].type} problem={projectsConfig[1].problem} action={projectsConfig[1].action} impact={projectsConfig[1].impact}></Card>
           </div>
            
           <div className="md:h-dvh flex flex-col justify-end items-center md:snap-start">
-            <div className="md:h-[80vh] flex flex-col justify-center">
+            <div className="md:h-[80dvh] flex flex-col justify-center">
               <Card projectName={projectsConfig[2].project} type={projectsConfig[2].type} problem={projectsConfig[2].problem} action={projectsConfig[2].action} impact={projectsConfig[2].impact}><div className="snap-start"></div></Card>
             </div>
             
-            <div className="h-dvh bg-[#FFBFBF] w-full md:h-[20vh] pb-[10vh] flex flex-col justify-center  items-center max-sm:snap-start">
-              <div className="md:h-[10vh] flex flex-col justify-center">
+            <div className="h-dvh bg-[#FFBFBF] w-full md:h-[20dvh] pb-[10dvh] flex flex-col justify-center  items-center max-sm:snap-start">
+              <div className="md:h-[10dvh] flex flex-col justify-center">
                 <h1 className="text-center font-serif italic text-xl font-medium px-2">I aim to maximize impact and improve performance, without losing sight of deadlines.</h1>
               </div>
             </div>

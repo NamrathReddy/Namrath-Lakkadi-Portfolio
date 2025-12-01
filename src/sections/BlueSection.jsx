@@ -116,7 +116,7 @@ const icons = {
 // ----------------------
 function Skill({ icon, label }) {
   return (
-    <div className="flex items-center text-sm lg:text-md bg-white/80 backdrop-blur-sm rounded-lg shadow-sm px-3 py-[1vh] h-[4vh]">
+    <div className="flex items-center text-sm lg:text-md bg-white/80 backdrop-blur-sm rounded-lg shadow-sm px-3 py-[1dvh] h-[4dvh]">
       <span
         className="w-5 h-5"
         dangerouslySetInnerHTML={{ __html: icon }}
@@ -131,10 +131,10 @@ function Skill({ icon, label }) {
 // ----------------------
 function Category({ title, skills }) {
   return (
-    <div className="bg-blue-100 rounded-xl border border-blue-200 shadow-lg shadow-blue-300 pb-[1vh] w-[90%] xl:w-2/3">
-      <h3 className="text-blue-800 font-semibold px-2 py-[1vh] text-lg lg:text-xl">{title}</h3>
+    <div className="bg-blue-100 rounded-xl border border-blue-200 shadow-lg shadow-blue-300 pb-[1dvh] w-[90%] xl:w-2/3">
+      <h3 className="text-blue-800 font-semibold px-2 py-[1dvh] text-lg lg:text-xl">{title}</h3>
 
-      <div className="grid grid-cols-1 gap-[.5vh]">
+      <div className="grid grid-cols-1 gap-[.5dvh]">
         {skills.map((s, i) => (
           <Skill key={i} icon={icons[s.icon]} label={s.label} />
         ))}
@@ -154,6 +154,10 @@ export default function BlueSection({
 }) {
   const [showIntro, setShowIntro] = useState(false);
   const [showSkills, setShowSkills] = useState(false);
+  const [typedHeading, setTypedHeading] = useState("");
+  const [typedSub, setTypedSub] = useState("");
+  const headingMessage = "My Blue Side";
+  const subMessage = "Skills & Learning Style";
 
   const introTimer = useRef(null);
   const skillsTimer = useRef(null);
@@ -194,6 +198,44 @@ useEffect(() => {
   }
 }, [playIntro, locked, onIntroComplete]);
 
+  // TYPEWRITER EFFECT FOR INTRO TEXT
+  useEffect(() => {
+    if (showIntro) {
+      let i1 = 0;
+      let i2 = 0;
+      let headingInterval;
+      let subInterval;
+      let subDelay;
+
+      headingInterval = setInterval(() => {
+        setTypedHeading(headingMessage.slice(0, i1));
+        i1 += 1;
+
+        if (i1 > headingMessage.length) {
+          clearInterval(headingInterval);
+
+          subDelay = setTimeout(() => {
+            subInterval = setInterval(() => {
+              setTypedSub(subMessage.slice(0, i2));
+              i2 += 1;
+
+              if (i2 > subMessage.length) clearInterval(subInterval);
+            }, 70);
+          }, 200);
+        }
+      }, 70);
+
+      return () => {
+        clearInterval(headingInterval);
+        clearInterval(subInterval);
+        clearTimeout(subDelay);
+      };
+    }
+
+    setTypedHeading("");
+    setTypedSub("");
+  }, [showIntro]);
+
 
   // ABORT
   useEffect(() => {
@@ -214,12 +256,16 @@ useEffect(() => {
 
       {/* INTRO */}
       <div
-        className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-700 font-serif italic 
+      className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-700 font-serif italic 
           ${showIntro ? "opacity-100" : "opacity-0"}
         `}
       >
-        <h1 className="text-4xl font-bold mb-3">My Blue Side</h1>
-        <p className="text-lg font-semibold">Skills & Learning Style</p>
+        <h1 className="text-4xl font-bold mb-3">
+          {showIntro ? typedHeading : typedHeading || headingMessage}
+        </h1>
+        <p className="text-lg font-semibold">
+          {showIntro ? typedSub : typedSub || subMessage}
+        </p>
       </div>
 
       {/* SKILLS */}
@@ -228,9 +274,9 @@ useEffect(() => {
           ${showSkills ? "opacity-100 overflow-scroll" : "opacity-0"}
         `}
       >
-        <div className="mx-auto grid grid-cols-1 md:grid-cols-2 md:grid-rows-[80vh_20vh] xl:gap-x-12">
-          <div className="h-dvh md:h-full pb-[10vh] md:pb-0 flex flex-col gap-2 justify-center items-center xl:items-end snap-start md:snap-none">
-          <Category //should i do pb-[10vh] or mb? pb is the answer
+        <div className="mx-auto grid grid-cols-1 md:grid-cols-2 md:grid-rows-[80dvh_20dvh] xl:gap-x-12">
+          <div className="h-dvh md:h-full pb-[10dvh] md:pb-0 flex flex-col gap-2 justify-center items-center xl:items-end snap-start md:snap-none">
+          <Category //should i do pb-[10dvh] or mb? pb is the answer
             title="Frontend"
             skills={[
               { icon: "react", label: "React.js" },
@@ -257,7 +303,7 @@ useEffect(() => {
             ]}
           />
           </div>
-          <div className="h-dvh md:h-full pb-[10vh] md:pb-0 flex flex-col gap-2 justify-center items-center xl:items-start snap-start md:snap-none">
+          <div className="h-dvh md:h-full pb-[10dvh] md:pb-0 flex flex-col gap-2 justify-center items-center xl:items-start snap-start md:snap-none">
           <Category
             title="Backend / APIs"
             skills={[
@@ -286,7 +332,7 @@ useEffect(() => {
           />
           </div>
           <div className="h-dvh md:h-full md:col-span-2 bg-[#B5D7FF] flex flex-row justify-center items-center md:items-start  px-2 snap-start md:snap-none">
-            <div className="text-xl font-serif italic md:h-[10vh] flex flex-col items-center justify-center text-center text-black font-medium">
+            <div className="text-xl font-serif italic md:h-[10dvh] flex flex-col items-center justify-center text-center text-black font-medium">
               <h1>My learning style is analytical: I research thoroughly, clarify concepts, and build knowledge step by step.</h1>
             </div>
             

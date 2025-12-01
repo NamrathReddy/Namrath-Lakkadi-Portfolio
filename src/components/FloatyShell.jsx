@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const sectionConfig = [
-  { id: "landing", label: "Over view", type: "landing", bgClass: "bg-slate-300"},
+  { id: "landing", label: "Over view", type: "landing", bgClass: "bg-slate-400"},
   { id: "blue", label: "Skills & Tech", type: "color", bgClass: "bg-blue-600" },
   { id: "red", label: "Projects & Impact", type: "color", bgClass: "bg-red-600" },
   { id: "green", label: "My Work Style", type: "color", bgClass: "bg-green-600" },
@@ -37,7 +37,7 @@ export default function FloatyShell({
   const containerClass = [
     "fixed w-full transition-all duration-700 ease-out overflow-hidden z-20 text-white",
     (locked&& currentSectionIndices.length===1)? "opacity-100" : "opacity-0 top-full",
-    isOpen ? "top-0 h-screen bg-black" : isLanding? "top-[95vh] h-[5vh]" :`top-[90vh] h-[10vh] ${currentConfig.bgClass}`,
+    isOpen ? "top-0 h-dvh bg-black" : isLanding? "top-[95dvh] h-[5dvh]" :`top-[90dvh] h-[10dvh] ${currentConfig.bgClass}`,
   ].join(" ");
 
   function LandingExpanded() {
@@ -63,7 +63,7 @@ export default function FloatyShell({
         </p>
         {/* <p>To disable intro animations click "⏹️"</p> */}
         <button 
-          className="bg-black text-white border-2 p-1 h-12 w-12 rounded-full mt-[10vh]"
+          className="bg-black text-white border-2 p-1 h-12 w-12 rounded-full mt-[10dvh]"
           >X</button>
       </div>
       </div>
@@ -89,14 +89,14 @@ export default function FloatyShell({
                 scrollToSection(index);
                 setIsOpen(false);
               }}
-              className= {` ${index === mainIndex?"text-white bg-slate-600":"text-black hover:bg-white"} font-semibold px-3 py-2 font-medium shadow-sm  rounded-full w-full md:h-[5vh] md:w-1/2 ${cfg.bgClass}`}
+              className= {` ${index === mainIndex?"text-white bg-slate-800":`text-black hover:bg-white ${cfg.bgClass}`} font-semibold px-3 py-2 shadow-sm  rounded-full w-full md:h-[5dvh] md:w-1/2 `}
             >
               {cfg.label}
             </button>
           ))}
           <button 
           onClick={() => setIsOpen((prev) => !prev)}
-          className=" bg-slate-600 p-1 rounded-full h-12 w-12 mt-12"
+          className=" bg-slate-700 p-1 rounded-full h-12 w-12 mt-12"
           >X</button>
         </div>
     );
@@ -138,7 +138,7 @@ export default function FloatyShell({
               <h1 >
                 {currentConfig.label}
               </h1>
-              <h1 className="leading-[2vh] h-[2vh] text-2xl">︿</h1> 
+              <h1 className="leading-[2dvh] h-[2dvh] text-2xl">︿</h1> 
               {/* ▲ */}
             </div>)
             
@@ -151,7 +151,7 @@ export default function FloatyShell({
         onClick={() => setIsOpen((prev) => !prev)}
         className={[
           (locked && currentSectionIndices.length===1) ? "opacity-100" : "opacity-0",
-          "fixed z-30 bottom-[2vh] right-[5vw]",
+          "fixed z-30 bottom-[2dvh] right-[5vw]",
           "h-12 w-12 rounded-full flex items-center justify-center",
           "bg-black text-white shadow-lg border border-white/40",
           "transition-transform duration-200 active:scale-95",

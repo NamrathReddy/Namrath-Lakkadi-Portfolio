@@ -132,16 +132,16 @@ useEffect(() => {
       >
         {/* border-2 border-black border-solid */}
         {/* Top 2/3 */}
-        <div className="h-[70vh] xl:h-[50vh] xl:my-[10vh] flex flex-col xl:flex-row xl:w-[80%] xl:ml-auto xl:mr-auto items-center xl:items-center justify-center xl:shadow-2xl xl:shadow-black/50 xl:rounded-full">
+        <div className="h-[70dvh] xl:h-[50dvh] xl:my-[10dvh] flex flex-col xl:flex-row xl:w-[80%] xl:ml-auto xl:mr-auto items-center xl:items-center justify-center xl:shadow-2xl xl:shadow-black/50 xl:rounded-full">
 
           {/* Picture and Name */}
-          <div className="h-[30vh] xl:h-[50vh] xl:w-1/3 flex flex-col items-center justify-center">
+          <div className="h-[30dvh] xl:h-[50dvh] xl:w-1/3 flex flex-col items-center justify-center">
             
             {/* Picture */}
             <div className="">
               <img
                 src={profileImg}
-                className="ring-4  shadow-lg shadow-black/50 ring-white/20 w-[25vh] h-[25vh] xl:w-[35vh] xl:h-[35vh] rounded-full object-cover"
+                className="ring-4  shadow-lg shadow-black/50 ring-white/20 w-[25dvh] h-[25dvh] xl:w-[35dvh] xl:h-[35dvh] rounded-full object-cover"
               />
             </div>
 
@@ -149,32 +149,32 @@ useEffect(() => {
           </div>
 
           {/* Title, skills and Summary */}
-          <div className="xl:pl-10 h-[35vh] xl:h-[50vh] xl:w-2/3 flex flex-col justify-center">
-           <div className="h-[35vh] xl:h-[35vh] flex flex-col justify-between">
+          <div className="xl:pl-10 h-[35dvh] xl:h-[50dvh] xl:w-2/3 flex flex-col justify-center">
+           <div className="h-[35dvh] xl:h-[35dvh] flex flex-col justify-between">
             {/* Name */}
-            <h3 className="w-fit h-[5vh] leading-[5vh] mx-auto xl:ml-0 px-3 shadow-lg shadow-black/50 text-center text-lg bg-gray-950 rounded-full xl:rounded-[64px_128px_128px_0px]">
+            <h3 className="w-fit h-[5dvh] leading-[5dvh] mx-auto xl:ml-0 px-3 shadow-lg shadow-black/50 text-center text-lg bg-gray-950 rounded-full xl:rounded-[64px_128px_128px_0px]">
               Hi, I'm Namrath
             </h3>
             {/* Title */}
             
-              <h5 className="mx-auto h-[5vh] leading-[5vh]  py-auto xl:ml-0 px-3 bg-gray-950 shadow-lg shadow-black/50 rounded-full xl:rounded-l-none text-center text-md w-fit">
+              <h5 className="mx-auto h-[5dvh] leading-[5dvh]  py-auto xl:ml-0 px-3 bg-gray-950 shadow-lg shadow-black/50 rounded-full xl:rounded-l-none text-center text-md w-fit">
                 Frontend/FullStack Developer
               </h5>
             
 
             {/* Skills */}
-            <div className="h-[4vh] flex flex-row justify-evenly md:justify-center xl:justify-start items-center text-sm md:gap-3">
-              <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full xl:rounded-l-none px-2 sm:px-3 leading-[4vh]  h-[4vh]">React</p>
-              <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full px-2 sm:px-3 leading-[4vh]  h-[4vh]">NextJs</p>
-              <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full px-2 sm:px-3 leading-[4vh]  h-[4vh]">Tailwind</p>
-              <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full px-2 sm:px-3 leading-[4vh]  h-[4vh]">NodeJs</p>
-              <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full px-2 sm:px-3 leading-[4vh]  h-[4vh]">SQL</p>
+            <div className="h-[4dvh] flex flex-row justify-evenly md:justify-center xl:justify-start items-center text-sm md:gap-3">
+              <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full xl:rounded-l-none px-2 sm:px-3 leading-[4dvh]  h-[4dvh]">React</p>
+              <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full px-2 sm:px-3 leading-[4dvh]  h-[4dvh]">NextJs</p>
+              <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full px-2 sm:px-3 leading-[4dvh]  h-[4dvh]">Tailwind</p>
+              <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full px-2 sm:px-3 leading-[4dvh]  h-[4dvh]">NodeJs</p>
+              <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full px-2 sm:px-3 leading-[4dvh]  h-[4dvh]">SQL</p>
             </div>
 
             {/* Summary */}
             {/* bg-[#C4FBC9] */}
             {/* had to put px-1 for 12-pro instead of px-3 for all */}
-            <div className="max-sm:h-[18vh] xl:w-[90%] leading-tight h-[15vh] shadow-xl shadow-black/50 max-md:rounded-2xl max-xl:rounded-full xl:rounded-[0px_128px_128px_32px]   mx-1 md:mx-3 xl:mx-0 px-1  sm:px-3 bg-gray-950 text-center text-lg flex flex-col justify-center items-center xl:items-start xl:text-start">
+            <div className="max-sm:h-[18dvh] xl:w-[90%] leading-tight h-[15dvh] shadow-xl shadow-black/50 max-md:rounded-2xl max-xl:rounded-full xl:rounded-[0px_128px_128px_32px]   mx-1 md:mx-3 xl:mx-0 px-1  sm:px-3 bg-gray-950 text-center text-lg flex flex-col justify-center items-center xl:items-start xl:text-start">
               <p className="">
                 I care about clarity in my code, impact in my projects,
                 collaboration in my process, and real connection with the people I
@@ -189,9 +189,9 @@ useEffect(() => {
  
         {/* Bottom */}
         {/* bg-[#FFF7E6]/80  */}
-        <div className="h-[30vh] xl:h-[40vh] w-full bg-black font-sans  text-black flex flex-col items-center justify-start pt-[2vh] md:pt-[5vh] gap-[2.5vh]">
+        <div className="h-[30dvh] xl:h-[40dvh] w-full bg-black font-sans text-black flex flex-col items-center justify-start pt-[2dvh] md:pt-[5dvh] gap-[2.5dvh]">
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-[2.5vh]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-[2.5dvh]">
             <button className="
        bg-[#CFE4FF]
        hover:bg-[#B5D7FF] 
@@ -201,7 +201,7 @@ useEffect(() => {
        hover:shadow-[0_4px_10px_#CFE4FF]
        hover:-translate-y-[5px]
        transition-all duration-200 
-       px-2 py-[.25vh]" onClick={() => scrollToSection(1)}>
+       px-2 py-[.25dvh]" onClick={() => scrollToSection(1)}>
               <span className="text-md font-bold block">BLUE</span>
               <span className="text-sm block">Skills & Tech</span>
             </button>
@@ -212,7 +212,7 @@ useEffect(() => {
        shadow-lg shadow-[#FFD3D3]
        hover:shadow-[0_4px_10px_#FFD3D3]
        hover:-translate-y-[5px]
-       transition-all duration-200 px-2 py-[.25vh]" onClick={() => scrollToSection(2)}>
+       transition-all duration-200 px-2 py-[.25dvh]" onClick={() => scrollToSection(2)}>
               <span className="text-md font-bold block">RED</span>
               <span className="text-sm block">Projects & Impact</span>
             </button>
@@ -223,7 +223,7 @@ useEffect(() => {
        shadow-lg shadow-[#D8FFDC]
        hover:shadow-[0_4px_10px_#D8FFDC]
        hover:-translate-y-[5px]
-       transition-all duration-200 px-2 py-[.25vh]" onClick={() => scrollToSection(3)}>
+       transition-all duration-200 px-2 py-[.25dvh]" onClick={() => scrollToSection(3)}>
               <span className="text-md font-bold block">GREEN</span>
               <span className="text-sm block">My Work Style</span>
             </button>
@@ -234,13 +234,13 @@ useEffect(() => {
        shadow-lg shadow-[#FFF2B8]
        hover:shadow-[0_4px_10px_#FFF2B8]
        hover:-translate-y-[5px]
-       transition-all duration-200  px-2 py-[.25vh]" onClick={() => scrollToSection(4)}>
+       transition-all duration-200  px-2 py-[.25dvh]" onClick={() => scrollToSection(4)}>
               <span className="text-md font-bold block">YELLOW</span>
               <span className="text-sm block">Connect With Me</span>
             </button>
           </div>
 
-          <button className="text-[#FFF9ED]/90 bg-gray-800 px-2 py-[1vh]
+          <button className="text-[#FFF9ED]/90 bg-gray-800 px-2 py-[1dvh]
           hover:bg-gray-900
           rounded-xl 
        shadow-lg shadow-gray-500

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 //I believe the best solutions come from collaboration, clarity, and thoughtful decision-making.
-const INTRO_DURATION = 3500;
+const INTRO_DURATION = 4000;
 
 export default function GreenSection({
   playIntro,
@@ -10,6 +10,10 @@ export default function GreenSection({
 }) {
   const [showIntro, setShowIntro] = useState(false);
   const [showContent, setShowContent] = useState(false);
+  const [typedHeading, setTypedHeading] = useState("");
+  const [typedSub, setTypedSub] = useState("");
+  const headingMessage = "My Green Side";
+  const subMessage = "How I think. How I work. How I help.";
 
   const [flipped, setFlipped] = useState([false, false, false, false]);
 
@@ -68,7 +72,7 @@ const pillars = [
 
       introTimer.current = setTimeout(() => {
         setShowIntro(false);
-      }, 3000);
+      }, 3500);
 
       // contentTimer.current = setTimeout(() => {
       //   setShowContent(true);
@@ -79,6 +83,44 @@ const pillars = [
       }, INTRO_DURATION);
     }
   }, [playIntro, locked, onIntroComplete]);
+
+  // TYPEWRITER EFFECT FOR INTRO TEXT
+  useEffect(() => {
+    if (showIntro) {
+      let i1 = 0;
+      let i2 = 0;
+      let headingInterval;
+      let subInterval;
+      let subDelay;
+
+      headingInterval = setInterval(() => {
+        setTypedHeading(headingMessage.slice(0, i1));
+        i1 += 1;
+
+        if (i1 > headingMessage.length) {
+          clearInterval(headingInterval);
+
+          subDelay = setTimeout(() => {
+            subInterval = setInterval(() => {
+              setTypedSub(subMessage.slice(0, i2));
+              i2 += 1;
+
+              if (i2 > subMessage.length) clearInterval(subInterval);
+            }, 70);
+          }, 200);
+        }
+      }, 70);
+
+      return () => {
+        clearInterval(headingInterval);
+        clearInterval(subInterval);
+        clearTimeout(subDelay);
+      };
+    }
+
+    setTypedHeading("");
+    setTypedSub("");
+  }, [showIntro]);
 
   // ⭐ ABORT INTRO
   useEffect(() => {
@@ -122,8 +164,12 @@ useEffect(() => {
         className={`absolute inset-0 flex flex-col text-center items-center justify-center transition-opacity duration-700
         ${showIntro ? "opacity-100" : "opacity-0"}`}
       >
-        <h1 className="text-4xl font-bold mb-3">My Green Side</h1>
-        <p className="text-lg font-semibold mt-1">How I think. How I work. How I help.</p>
+        <h1 className="text-4xl font-bold mb-3">
+          {showIntro ? typedHeading : typedHeading || headingMessage}
+        </h1>
+        <p className="text-lg font-semibold mt-1">
+          {showIntro ? typedSub : typedSub || subMessage}
+        </p>
       </div>
 
       {/* CONTENT */}
@@ -133,12 +179,12 @@ useEffect(() => {
       >
         
           {/* 2×2 FLIP CARD GRID */}
-<div className="h-dvh w-[90%] mx-auto grid grid-cols-1 gap-x-12 place-content-evenly items-center md:grid-cols-2  pb-[10vh]">
+<div className="h-dvh w-[90%] mx-auto grid grid-cols-1 gap-x-12 place-content-evenly items-center md:grid-cols-2  pb-[10dvh]">
 
   {pillars.map((pillar, idx) => (
     <div
       key={idx}
-      className="relative bottom-0 h-[20vh] md:h-[30vh] rounded-xl cursor-pointer"
+      className="relative bottom-0 h-[20dvh] md:h-[30dvh] rounded-xl cursor-pointer"
       style={{ perspective: "1000px" }}
       onClick={() => {
         setFlipped(prev => {

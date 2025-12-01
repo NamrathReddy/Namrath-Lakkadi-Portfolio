@@ -132,7 +132,7 @@ export default function App() {
     <>
       <div
         ref={containerRef}
-        className="w-full snap-y snap-mandatory overflow-y-scroll h-screen"
+        className="w-full snap-y snap-mandatory overflow-y-scroll h-dvh"
       >
         {sections.map((Sec, index) => (
           <div

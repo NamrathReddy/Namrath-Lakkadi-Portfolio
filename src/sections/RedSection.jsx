@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 //I turn complex technical challenges into clean, high-impact solutions
 //I aim to maximize impact and improve performance, without losing sight of deadlines.
 //keep the above statement constant on bottom of the screen and but the scroll should work normally, i think we can make it work by putting all the projects in one conatiner and make it scrollable but put the statement in seperate container
-const INTRO_DURATION = 4200;
+const INTRO_DURATION = 3500;
 const projectsConfig = [
   {
     project: "Health Console Dashboard",
@@ -111,11 +111,11 @@ useEffect(() => {
 
       introTimer.current = setTimeout(() => {
         setShowIntro(false);
-      }, 2000);
+      }, 3000);
 
-      projectsTimer.current = setTimeout(() => {
-        setShowProjects(true);
-      }, 2600);
+      // projectsTimer.current = setTimeout(() => {
+      //   setShowProjects(true);
+      // }, 2600);
 
       lockTimer.current = setTimeout(() => {
         onIntroComplete?.();
@@ -142,12 +142,11 @@ useEffect(() => {
 
       {/* INTRO */}
       <div
-        className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-700 
+        className={`absolute inset-0 font-serif italic flex flex-col items-center justify-center transition-opacity duration-700 
         ${showIntro ? "opacity-100 " : "opacity-0"}`}
       >
-        <h1 className="text-4xl font-bold">My Red Side.</h1>
-        <h2 className="text-xl font-semibold mt-1">Execution. Delivery. Impact.</h2>
-        <p className="text-sm mt-2 opacity-80">Projects that moved the needle.</p>
+        <h1 className="text-4xl font-bold mb-3">My Red Side</h1>
+        <h2 className="text-lg font-semibold mt-1">Execution. Delivery. Impact.</h2>
       </div>
 
       {/* PROJECTS */}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const sectionConfig = [
-  { id: "landing", label: "Over view", type: "landing", bgClass: "bg-[#FFF9ED]", bgColor: "bg-[#CFE4FF]" },
+  { id: "landing", label: "Over view", type: "landing", bgClass: "bg-slate-300"},
   { id: "blue", label: "Skills & Tech", type: "color", bgClass: "bg-blue-600" },
   { id: "red", label: "Projects & Impact", type: "color", bgClass: "bg-red-600" },
   { id: "green", label: "My Work Style", type: "color", bgClass: "bg-green-600" },
@@ -59,7 +59,7 @@ export default function FloatyShell({
           <li className="bg-[#E6C653] py-1 px-2 rounded-lg"><strong>Yellow</strong> — optimistic, energetic, visionary...</li>
         </ul>
         <p className="mt-3">
-          My portfolio uses these four colors to show different sides of how I think and work.
+         I'm a Blue in how I learn. Green in how I work. Red in how I achieve. Yellow in how I interact.
         </p>
         {/* <p>To disable intro animations click "⏹️"</p> */}
         <button 
@@ -89,14 +89,14 @@ export default function FloatyShell({
                 scrollToSection(index);
                 setIsOpen(false);
               }}
-              className= {` ${index === mainIndex?"text-white":"text-black"} px-3 py-2 font-medium shadow-sm hover:bg-white rounded-full w-full md:h-[5vh] md:w-1/2 ${cfg.bgClass}`}
+              className= {` ${index === mainIndex?"text-white bg-slate-600":"text-black hover:bg-white"} font-semibold px-3 py-2 font-medium shadow-sm  rounded-full w-full md:h-[5vh] md:w-1/2 ${cfg.bgClass}`}
             >
               {cfg.label}
             </button>
           ))}
           <button 
           onClick={() => setIsOpen((prev) => !prev)}
-          className=" border-2 border-black p-1 rounded-full h-12 w-12 mt-12"
+          className=" bg-slate-600 p-1 rounded-full h-12 w-12 mt-12"
           >X</button>
         </div>
     );

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 //Let’s start a conversation — great things often begin with one
 // I keep the door open — reach out anytime.
-const INTRO_DURATION = 4500;
+const INTRO_DURATION = 3500;
 
 export default function YellowSection({
   playIntro,
@@ -44,11 +44,11 @@ export default function YellowSection({
 
       introTimer.current = setTimeout(() => {
         setShowIntro(false);
-      }, 2300);
-
-      connectTimer.current = setTimeout(() => {
-        setShowConnect(true);
       }, 3000);
+
+      // connectTimer.current = setTimeout(() => {
+      //   setShowConnect(true);
+      // }, 3000);
 
       lockTimer.current = setTimeout(() => {
         onIntroComplete?.();
@@ -71,16 +71,15 @@ export default function YellowSection({
   }, []);
 
   return (
-    <section className="h-dvh w-full bg-[#FFEFA0] relative snap-start snap-always overflow-hidden">
+    <section className="h-dvh w-full bg-[#FFEFA0] relative snap-start snap-always overflow-hidden font-serif italic">
 
       {/* INTRO */}
       <div
         className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-700
         ${showIntro ? "opacity-100" : "opacity-0"}`}
       >
-        <h1 className="text-4xl font-bold">My Yellow Side.</h1>
-        <h2 className="text-xl font-semibold">Connection & Opportunity.</h2>
-        <p className="text-sm opacity-80 mt-1">Let’s build something together.</p>
+        <h1 className="text-4xl font-bold mb-3">My Yellow Side</h1>
+        <h2 className="text-lg font-semibold">Connection & Opportunity</h2>
       </div>
 
       {/* CONNECT */}
@@ -98,7 +97,7 @@ export default function YellowSection({
             <p>
               Fastest way to reach me
             </p>
-            <button className="bg-white/80 border-2 border-black rounded-lg p-3 flex flex-row items-center justify-center shadow-lg shadow-black/50">
+            <button className="bg-white/80 border-2 border-black rounded-lg p-3 flex flex-row items-center justify-center shadow-lg shadow-black/50 cursor-text">
               <span className="w-7 h-7 flex items-center justify-center">
   <svg
     xmlns="http://www.w3.org/2000/svg"

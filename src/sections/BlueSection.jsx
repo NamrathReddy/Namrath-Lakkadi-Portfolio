@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const INTRO_DURATION = 3000; // 5 seconds
+const INTRO_DURATION = 3500; // 5 seconds
 
 // ----------------------
 //  SVG ICON COMPONENTS
@@ -185,8 +185,8 @@ useEffect(() => {
     setShowIntro(true);
     setShowSkills(false);
 
-    introTimer.current = setTimeout(() => setShowIntro(false), 2500);
-    skillsTimer.current = setTimeout(() => setShowSkills(true), 3000);
+    introTimer.current = setTimeout(() => setShowIntro(false), 3000);
+    // skillsTimer.current = setTimeout(() => setShowSkills(true), 3500);
 
     lockTimer.current = setTimeout(() => {
       if (onIntroComplete) onIntroComplete();
@@ -214,17 +214,17 @@ useEffect(() => {
 
       {/* INTRO */}
       <div
-        className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-500 font-serif italic font-bold
+        className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-700 font-serif italic 
           ${showIntro ? "opacity-100" : "opacity-0"}
         `}
       >
-        <h1 className="text-4xl mb-3">My Blue Side.</h1>
-        <p className="text-lg ">Skills & Learning Style</p>
+        <h1 className="text-4xl font-bold mb-3">My Blue Side</h1>
+        <p className="text-lg font-semibold">Skills & Learning Style</p>
       </div>
 
       {/* SKILLS */}
       <div
-        className={`absolute inset-0 transition-opacity duration-500 snap-y snap-mandatory
+        className={`absolute inset-0 transition-opacity duration-700 snap-y snap-mandatory
           ${showSkills ? "opacity-100 overflow-scroll" : "opacity-0"}
         `}
       >

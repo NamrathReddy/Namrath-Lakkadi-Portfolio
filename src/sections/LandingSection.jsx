@@ -132,7 +132,7 @@ useEffect(() => {
       >
         {/* border-2 border-black border-solid */}
         {/* Top 2/3 */}
-        <div className="h-[70vh] xl:h-[60vh] flex flex-col xl:flex-row xl:w-[70%] xl:ml-auto xl:mr-auto items-center xl:items-end justify-center">
+        <div className="h-[70vh] xl:h-[50vh] xl:my-[10vh] flex flex-col xl:flex-row xl:w-[80%] xl:ml-auto xl:mr-auto items-center xl:items-center justify-center xl:shadow-2xl xl:shadow-black/50 xl:rounded-full">
 
           {/* Picture and Name */}
           <div className="h-[30vh] xl:h-[50vh] xl:w-1/3 flex flex-col items-center justify-center">
@@ -152,19 +152,19 @@ useEffect(() => {
           <div className="xl:pl-10 h-[35vh] xl:h-[50vh] xl:w-2/3 flex flex-col justify-center">
            <div className="h-[35vh] xl:h-[35vh] flex flex-col justify-between">
             {/* Name */}
-            <h3 className="w-fit h-[5vh] leading-[5vh] mx-auto xl:ml-0 px-3 shadow-lg shadow-black/50 text-center text-lg bg-gray-950 rounded-full ">
+            <h3 className="w-fit h-[5vh] leading-[5vh] mx-auto xl:ml-0 px-3 shadow-lg shadow-black/50 text-center text-lg bg-gray-950 rounded-full xl:rounded-[64px_128px_128px_0px]">
               Hi, I'm Namrath
             </h3>
             {/* Title */}
             
-              <h5 className="mx-auto h-[5vh] leading-[5vh]  py-auto xl:ml-0 px-3 bg-gray-950 shadow-lg shadow-black/50 rounded-full text-center text-md w-fit">
+              <h5 className="mx-auto h-[5vh] leading-[5vh]  py-auto xl:ml-0 px-3 bg-gray-950 shadow-lg shadow-black/50 rounded-full xl:rounded-l-none text-center text-md w-fit">
                 Frontend/FullStack Developer
               </h5>
             
 
             {/* Skills */}
             <div className="h-[4vh] flex flex-row justify-evenly md:justify-center xl:justify-start items-center text-sm md:gap-3">
-              <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full px-2 sm:px-3 leading-[4vh]  h-[4vh]">React</p>
+              <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full xl:rounded-l-none px-2 sm:px-3 leading-[4vh]  h-[4vh]">React</p>
               <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full px-2 sm:px-3 leading-[4vh]  h-[4vh]">NextJs</p>
               <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full px-2 sm:px-3 leading-[4vh]  h-[4vh]">Tailwind</p>
               <p className=" bg-gray-950 shadow-lg shadow-black/50 rounded-full px-2 sm:px-3 leading-[4vh]  h-[4vh]">NodeJs</p>
@@ -174,7 +174,7 @@ useEffect(() => {
             {/* Summary */}
             {/* bg-[#C4FBC9] */}
             {/* had to put px-1 for 12-pro instead of px-3 for all */}
-            <div className="max-sm:h-[18vh] leading-tight h-[15vh] shadow-xl shadow-black/50 rounded-2xl mx-1 md:mx-3 xl:mx-0 px-1  sm:px-3 bg-gray-950 text-center text-lg flex flex-col justify-center items-center xl:items-start xl:text-start">
+            <div className="max-sm:h-[18vh] xl:w-[90%] leading-tight h-[15vh] shadow-xl shadow-black/50 max-md:rounded-2xl max-xl:rounded-full xl:rounded-[0px_128px_128px_32px]   mx-1 md:mx-3 xl:mx-0 px-1  sm:px-3 bg-gray-950 text-center text-lg flex flex-col justify-center items-center xl:items-start xl:text-start">
               <p className="">
                 I care about clarity in my code, impact in my projects,
                 collaboration in my process, and real connection with the people I

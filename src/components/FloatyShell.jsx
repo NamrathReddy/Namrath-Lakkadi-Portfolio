@@ -30,9 +30,9 @@ export default function FloatyShell({
     setIsOpen(false);
   }, [mainIndex]);
 
-  const floatyIcon = isLanding
-    ? isOpen ? "X" : "?"
-    : isOpen ? "X" : "▲"; //◎
+  // const floatyIcon = isLanding
+  //   ? isOpen ? "X" : "?"
+  //   : isOpen ? "X" : "▲"; //◎
 
   const containerClass = [
     "fixed w-full transition-all duration-700 ease-out overflow-hidden z-20 text-white",
@@ -89,7 +89,7 @@ export default function FloatyShell({
                 scrollToSection(index);
                 setIsOpen(false);
               }}
-              className= {` ${index === mainIndex?"text-white bg-slate-800":`text-black hover:bg-white ${cfg.bgClass}`} font-semibold px-3 py-2 shadow-sm  rounded-full w-full md:h-[5dvh] md:w-1/2 `}
+              className= {` ${index === mainIndex?"text-white bg-slate-800":`text-black xl:hover:bg-white ${cfg.bgClass}`} font-semibold px-3 py-2 shadow-sm  rounded-full w-full md:h-[5dvh] md:w-1/2 `}
             >
               {cfg.label}
             </button>
